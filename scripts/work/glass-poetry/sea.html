@@ -1,0 +1,96 @@
+<html>
+<head>
+  <title>glass poetry</title>
+  <link rel="stylesheet" type="text/css" href="./main.css" />
+</head>
+<body>
+
+<div id="render-text" ></div>
+<div class="source-text" hidden>
+  The earth was formed whole and continuous in the universe, without lines.
+The human mind arose in the universe needing lines, boundaries, distinctions. Here and not there. This and not that. Mine and not yours.
+That is sea and this is land, the mind thinks, and here is the line between them. See? It’s very clear on the map.
+But, as the linguists say, the map is not the territory. The line on the map is not to be found at the edge of the sea.
+Humans build houses on the land beside the sea, and the sea comes and takes them away.
+That is not land, says the sea. It is also not sea. Look at the territory, which God created, not the map, which you created. There is no exact place where land ends and sea begins.
+The large places that are not-land, not-sea, are beautiful, functional, fecund. Humans do not treasure them, in fact they barely see them, because those spaces do not fit the lines in the mind. Humans keep busy dredging, filling, building, diking, draining the places between land and sea, trying to make them either one or the other.
+Here is the line, the human mind says, between Poland and Russia, between France and Germany, between Jordan and Israel. Here is the Iron Curtain between East and West. Here is the line around the United States, separating Us from Not-Us. It’s very clear here, on the map.
+The cosmonauts and astronauts in space (cosmonauts are Theirs, astronauts are Ours) look down and see no truth to the lines. They are created only by minds, and they shift in history as minds change.
+On the earth’s time-scale, human-invented lines shift very quickly. The maps of 50 years ago, of 100 years ago, of 1000 years ago are very different from the maps of today. The planet is 4 billion years old. Human lines are ephemeral, though people kill each other over them.
+Even during the fleeting moments of planetary time when the lines between nations are held still, immigrants cross them legally and illegally. Money and goods cross them legally and illegally. Migrating birds cross them, acid rain crosses them, radioactive debris from Chernobyl crosses them. Ideas cross them with the speed of sound and light. Even where Idea Police stand guard, ideas are not stopped by the lines. How could they be? The lines are themselves only ideas.
+</div>
+
+<script>
+
+  const renderText = document.getElementById("render-text");
+
+  let charxels = [];
+
+
+  function distSquared(x1, y1, x2, y2) {
+    return Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2);
+  }
+
+  function start() {
+    
+    const texts = document.getElementsByClassName("source-text");
+    const textElm = texts[0];
+    const text = textElm.innerHTML;
+    console.log(text);
+
+    for (let i = 0; i < text.length; i++) {
+      let elm = document.createElement("span");
+
+      elm.innerHTML = text[i];
+      renderText.appendChild(elm);
+      charxels.push(elm);
+
+    }
+
+
+    window.requestAnimationFrame(tick);
+  }
+
+
+
+  let delta_time;
+  let last_tick = Date.now();
+  let tick_num = 0;
+  let cutoff = 0;
+  function tick() {
+
+    delta_time = Date.now() - last_tick;
+    last_tick = Date.now();
+    tick_num++;
+    
+    if (tick_num % 4 == 0) {
+	    cutoff += 2;
+    }
+    console.log(cutoff);
+
+    // console.log(cutoff)
+
+    for (elm of charxels) {
+      const rect = elm.getBoundingClientRect();
+      // console.log(rect.left);
+
+      if (rect.left > cutoff) {
+        elm.style.visibility = "visible";
+      } else {
+        elm.style.visibility = "hidden";
+      }
+    }
+
+    window.requestAnimationFrame(tick);
+  }
+
+
+  start();
+
+
+
+</script>
+
+
+</body>
+</html>

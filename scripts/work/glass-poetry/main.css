@@ -1,0 +1,44 @@
+body {
+  background: black;
+}
+
+* {
+  font-size: 18px;
+  color: white;
+}
+
+
+#game {
+  /* 
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  */ 
+  position: absolute;
+  overflow: hidden;
+
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+
+  width: 1400px;
+  height: 750px;
+
+
+  background: black;
+
+  background-size: cover;
+
+  /*
+  background-image: url("bedroom.png");
+  background-position: -7000px -650px;
+  */
+
+  cursor: default;
+
+  /*
+  display: flex;
+  justify-content: center;
+  */
+}

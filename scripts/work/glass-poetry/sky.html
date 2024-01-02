@@ -1,0 +1,189 @@
+<html>
+<head>
+  <title>glass poetry</title>
+  <link rel="stylesheet" type="text/css" href="./main.css" />
+<style>
+  body {
+    background: #4593ff;
+  }
+  
+  * {
+    font-size: 18px;
+    color: #e5e5e5;
+  }
+</style>
+</head>
+<body>
+
+<div id="render-text" ></div>
+<div class="source-text" hidden>
+  This love of one’s subject is something I’m provisionally calling the observational eros. The observational eros is an emotional fascination with one’s subject that is so strong it overpowers the desire to make anything new. It’s pretty well summed up in the introduction of Steinbeck’s Cannery Row, where he describes the patience and care involved in close observation of one’s specimens:
+
+When you collect marine animals there are certain flat worms so delicate that they are almost impossible to capture whole, for they break and tatter under the touch. You must let them ooze and crawl of their own will onto a knife blade and then lift them gently into your bottle of sea water. And perhaps that might be the way to write this book — to open the page and let the stories crawl in by themselves.
+
+The subject of observation is so precious and fragile that it risks breaking under even the weight of observation. As an artist, I fear the breaking and tattering of my specimens under my touch, and so with everything I’ve ever “made,” without even thinking about it, I’ve tried to keep a very light touch.
+
+It may not surprise you to know, then, that my favorite movies tend to be documentaries, and that one of my favorite public art pieces was done by the documentary filmmaker, Eleanor Coppola. In 1973, she carried out a public art project called Windows, which materially speaking consisted only of a map with a list of locations in San Francisco.
+
+The map reads, “Eleanor Coppola has designated a number of windows in all parts of San Francisco as visual landmarks. Her purpose in this project is to bring to the attention of the whole community, art that exists in its own context, where it is found, without being altered or removed to a gallery situation.” I like to consider this piece in contrast with how we normally experience public art, which is some giant steel thing that looks like it landed in a corporate plaza from outer space.
+
+no disrespect to Richard Deacon or George Rickey
+Coppola instead casts a subtle frame over the whole of the city itself as a work of art, a light but meaningful touch that recognizes art that exists where it already is.
+
+A more recent project that acts in a similar spirit is Scott Polach’s Applause Encouraged, which happened at Cabrillo National Monument in San Diego in 2015. Forty-five minutes before the sunset, a greeter checked the guests in to this cordoned-off area. They were ushered to their seats and reminded not to take photos. When the sunset finished, they applauded, and refreshments were offered afterward.²
+
+And here in Minneapolis, at the Walker, many of us have gotten to experience James Turrell’s sky room (officially Sky Pesher), in which one can contemplate an isolated patch of sky. I enjoyed visiting the room on three consecutive days, each time seeing different kinds of clouds moving at different speeds.
+
+
+Besides the sky itself, what I most loved about this room was the slant in the wall, this generous architectural invitation to look skyward for as long as one could afford to stay.
+
+
+</div>
+
+<script>
+
+  const renderText = document.getElementById("render-text");
+
+  let charxels = [];
+
+
+  function distSquared(x1, y1, x2, y2) {
+    return Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2);
+  }
+
+  function start() {
+    
+    const texts = document.getElementsByClassName("source-text");
+    const textElm = texts[0];
+    const text = textElm.innerHTML;
+    console.log(text);
+
+    for (let i = 0; i < text.length; i++) {
+      let elm = document.createElement("span");
+
+      elm.innerHTML = text[i];
+      renderText.appendChild(elm);
+      charxels.push(elm);
+
+    }
+
+
+    window.requestAnimationFrame(tick);
+  }
+
+  let cloud = {
+    x: 100,
+    y: 100,
+    speed: 10,
+    size: 5000
+  };
+
+  let cloud2 = {
+    x: 400,
+    y: 250,
+    speed: 3,
+    size: 10000
+  };
+
+  let plane = {
+    x: 1000,
+    y: 200,
+    speed: -100,
+    size: 100
+  };
+
+
+  let observables = [
+    cloud,
+    cloud2,
+    plane
+  ];
+
+
+  let delta_time;
+  let last_tick = Date.now();
+  let tick_num = 0;
+  let cutoff = 0;
+  function tick() {
+
+    delta_time = Date.now() - last_tick;
+    last_tick = Date.now();
+    tick_num++;
+
+    // if (tick_num % 10 == 0) {
+    //   for (elm of charxels) {
+    //     if (Math.random() > 0.5) {
+    //       elm.style.visibility = "visible";
+    //     } else {
+    //       elm.style.visibility = "hidden";
+    //     }
+    //   }
+    // }
+
+    for (ob of observables) {
+      ob.x += (ob.speed / 100);
+    }
+    
+
+    // console.log(cutoff)
+
+    for (elm of charxels) {
+      const rect = elm.getBoundingClientRect();
+
+      // console.log(rect.left);
+
+      let hit = false;
+
+	// HERE
+      for (ob of observables) {
+
+        let distSq = distSquared(ob.x, ob.y, 
+  			       rect.left, rect.top);
+        // console.log(distSq);
+  
+        if (distSq < ob.size) {
+	  hit = true;
+	  break;
+        }
+      }
+
+      if (hit) {
+        elm.style.visibility = "visible";
+      } else {
+        elm.style.visibility = "hidden";
+      }
+  
+      // x = 500;
+      // y = 200;
+      // distSq = distSquared(x, y, rect.left, rect.top);
+
+      // if (distSq > cutoff) {
+      //   // elm.style.visibility = "visible";
+      // } else {
+      //   elm.style.visibility = "hidden";
+      // }
+
+      // x = 200;
+      // y = 500;
+      // distSq = distSquared(x, y, rect.left, rect.top);
+
+      // if (distSq > cutoff) {
+      //   // elm.style.visibility = "visible";
+      // } else {
+      //   elm.style.visibility = "hidden";
+      // }
+    }
+
+    window.requestAnimationFrame(tick);
+  }
+
+
+  start();
+
+
+
+</script>
+
+
+</body>
+</html>

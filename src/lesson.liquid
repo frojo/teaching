@@ -1,0 +1,17 @@
+---
+layout: page.liquid
+title: lesson x
+
+pagination:
+  data: collections.lesson
+  size: 1
+  alias: lesson
+
+permalink: "/{{ lesson.data.title | slugify }}/"
+---
+
+{{ lesson.content }}
+
+
+
+

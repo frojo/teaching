@@ -1,0 +1,122 @@
+<html>
+<head>
+  <title>glass poetry</title>
+  <link rel="stylesheet" type="text/css" href="./main.css" />
+<style>
+  body {
+    background: saddlebrown;
+  }
+  
+  * {
+    font-size: 18px;
+    color: lightgreen;
+  }
+</style>
+</head>
+<body>
+
+<div id="render-text" ></div>
+<div class="source-text" hidden>
+  REEs are a group of metals comprised of yttrium, fourteen lanthanide elements, and scandium, which have been called ‘industrial vitamins’ and a ‘treasury’ of novel materials due to their dominant role in technical progress and in the development of traditional industries. Despite the growing interest, information that has become available over the last two decades regarding RREs is relatively premature and scarce, which has led to the current controversy regarding the health benefits vs toxic effects of these materials. There are many environmental and health issues associated the production, processing, and utilization of REEs. This review offers an examination of the roles of REEs in the onset of cellular oxidative stress in reference to the impact of REE exposure to cells, animals, and plants, in order to explain disease and occupational poisoning of local residents, water pollution, and farmland destruction. Conversely, a body of evidence has shown REE-associated antioxidant effects in the treatment of many diseases. The content herein is aimed at presenting the recent and pending developments in the field of REE with respect to environmental and human health implications. Multi-faceted updates on the roles of REEs focusing on different organisms and exposure routes, and several issues regarding environmental and biological research, are discussed. The current gaps in information raise a number of open questions that deserve ad hoc investigation.
+  In concert with the development of new materials in the last decade, the need for toxicological studies of these materials has been increasing. These new materials include a group of rare earths (RE). The use of RE nanotechnology is being considered in some green applications, to increase their efficiency by using nano-sized RE compounds, and therefore hazard evaluation and risk assessment are highly recommended. This review was conducted through an extensive contemplation of the literatures in toxicology with in vitro and in vivo studies. Major aspects reviewed were the toxicological evaluations of these elements and metallic compounds at the molecular and cellular level, animal and human epidemiological studies and environmental and occupational health impacts on workers. We also discuss the future prospect of industries with appliances using RE together with the significance of preventive efforts for workers' health. To establish a safe and healthy working environment for RE industries, the use of biomarkers is increasing to provide sustainable measure, due to demand for information about the health risks from unfavorable exposures. Given the recent toxicological results on the exposure of cells, animals and workers to RE compounds, it is important to review the toxicological studies to improve the current understanding of the RE compounds in the field of occupational health. This will help to establish a sustainable, safe and healthy working environment for RE industries.
+</div>
+
+<script>
+
+  const renderText = document.getElementById("render-text");
+
+  let charxels = [];
+
+
+  function distSquared(x1, y1, x2, y2) {
+    return Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2);
+  }
+
+  function start() {
+    
+    const texts = document.getElementsByClassName("source-text");
+    const textElm = texts[0];
+    const text = textElm.innerHTML;
+    console.log(text);
+
+    for (let i = 0; i < text.length; i++) {
+      let elm = document.createElement("span");
+
+      elm.innerHTML = text[i];
+      renderText.appendChild(elm);
+      charxels.push(elm);
+
+    }
+
+
+    window.requestAnimationFrame(tick);
+  }
+
+
+
+  let delta_time;
+  let last_tick = Date.now();
+  let tick_num = 0;
+  let cutoff = 0;
+  function tick() {
+
+    delta_time = Date.now() - last_tick;
+    last_tick = Date.now();
+    tick_num++;
+
+    // if (tick_num % 10 == 0) {
+    //   for (elm of charxels) {
+    //     if (Math.random() > 0.5) {
+    //       elm.style.visibility = "visible";
+    //     } else {
+    //       elm.style.visibility = "hidden";
+    //     }
+    //   }
+    // }
+    
+    if (tick_num % 1 == 0) {
+	cutoff += 2;
+    }
+    console.log(cutoff);
+
+    // console.log(cutoff)
+
+    for (elm of charxels) {
+      const x = 100;
+      const y = 100;
+      const rect = elm.getBoundingClientRect();
+      // console.log(rect.left);
+
+      const distSq = distSquared(x, y, rect.top, rect.left);
+      // console.log(distSq);
+
+      if (distSq > cutoff) {
+        // elm.style.visibility = "visible";
+      } else {
+        elm.style.visibility = "hidden";
+      }
+
+      // x = 200;
+      // y = 250;
+      // distSq = distSquared(x, y, rect.top, rect.left);
+
+      // if (distSq > cutoff) {
+      //   // elm.style.visibility = "visible";
+      // } else {
+      //   elm.style.visibility = "hidden";
+      // }
+    }
+
+    window.requestAnimationFrame(tick);
+  }
+
+
+  start();
+
+
+
+</script>
+
+
+</body>
+</html>
