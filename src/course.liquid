@@ -1,0 +1,17 @@
+---
+layout: page.liquid
+title: course x
+
+pagination:
+  data: collections.course
+  size: 1
+  alias: course 
+
+permalink: "/{{ course.data.id | slugify }}/"
+---
+
+{{ course.content }}
+
+
+
+
