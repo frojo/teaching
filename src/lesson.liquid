@@ -7,7 +7,7 @@ pagination:
   size: 1
   alias: lesson
 
-permalink: "/{{ lesson.data.title | slugify }}/"
+permalink: "/{{lesson.data.course}}/{{ lesson.data.id | slugify }}/"
 ---
 
 {{ lesson.content }}
