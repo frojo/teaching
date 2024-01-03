@@ -3,7 +3,7 @@ layout: page.liquid
 title: index
 ---
 
-# fran rojo's classes
+# fran's classes
 {%- for course in collections.course -%}
   <div>
     <a href="/{{ course.data.id | slugify }}/">
