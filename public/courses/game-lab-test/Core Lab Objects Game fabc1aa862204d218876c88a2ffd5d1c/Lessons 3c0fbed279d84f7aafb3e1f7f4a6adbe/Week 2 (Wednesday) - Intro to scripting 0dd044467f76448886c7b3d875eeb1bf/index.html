@@ -1,0 +1,215 @@
+<h1>Week 2 (Wednesday) - Intro to scripting</h1>
+<h1>Share homework</h1>
+<h1>Gameobjects, tranforms, components review</h1>
+<h1>2D Sprites review</h1>
+<h3>How to create a sprite (with a Sprite Renderer)</h3>
+<ol>
+<li>Create an empty gameobject</li>
+<li>Select the new gameobject</li>
+<li>In the Inspector, click <strong>Add Component</strong></li>
+<li>Search for “Sprite Renderer” and add it</li>
+</ol>
+<p>OR: Drag in your sprite from the scene view</p>
+<h1>Intro. to scripting</h1>
+<p>What is a script? A script is just a component that we write ourselves. Every component in Unity is really a script under the hood.</p>
+<h2>How to create a script</h2>
+<ol>
+<li>Select the gameobject you wish to add a script to</li>
+<li>In the Inspector, click <strong>Add Component</strong></li>
+<li>Type out the <em><strong><strong><strong><strong><strong><strong><strong><strong><strong>name of your script</strong></strong></strong></strong></strong></strong></strong></strong></strong></em> (ex. Move)</li>
+<li>Click <strong><strong><strong><strong><strong><strong><strong><strong><strong>New Script</strong></strong></strong></strong></strong></strong></strong></strong></strong></li>
+<li>Confirm your scripts name by clicking <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Create and Add</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></li>
+</ol>
+<p><strong><strong>Note on naming scripts:</strong></strong> It can be very helpful to give your scripts good names. A good name is one that describes what the script does. Feel free to be as specific as possible!</p>
+<h2>How to open a script</h2>
+<p>Two ways you can open a script:</p>
+<ol>
+<li>Find it in your Project view and double click on it</li>
+<li>In the inspector, double click on the greyed-out name of it</li>
+</ol>
+<h2>Basic script layout</h2>
+<pre><code class="language-csharp">// These are &quot;libraries&quot; (i.e. other pieces of code)
+// that we need to import for our code
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// This is the name of our scrpit 
+public class Move : MonoBehaviour
+{
+		// This is where we declare variables
+    public int age = 10;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+</code></pre>
+<h3>Start() and Update()</h3>
+<p>Most scripts have a <strong>Start()</strong> and <strong>Update()</strong> function</p>
+<p><strong>Start()</strong> runs once at the onset of your program. Everything that we want to run once at the beginning of our game goes between the <strong>{</strong> and <strong>}</strong> curly brackets of our <code>Start()</code> function.</p>
+<p><strong>Update()</strong> function starts immediately after the code in <code>Start()</code> runs, and it happens in a loop. The entire <code>Update()</code> loop runs approximately 60 times a second, though this can vary as it’s dependent on your web browser speed and performance.</p>
+<h1>Variables</h1>
+<p>Variables are symbolic containers. It is a symbol that contains a value that you want to change while your program is running. An example is age. I always have an age, but the value of age changes over time. Each year that I continue to <em>run</em>, the value of my age increases by 1. When I was born my age was 0. A year later on my birthday, 1 was added to my age. A year after that another 1 was added to my age. And so on.</p>
+<p><img src="Week%202%20(Wednesday)%20-%20Intro%20to%20scripting%200dd044467f76448886c7b3d875eeb1bf/Untitled.png" alt="Untitled"></p>
+<h3>Declaring and initializing a variable</h3>
+<p>We can also create our own variables. There are two parts to create a variable: declaring and initializing.</p>
+<p>Declaring is when you name a variable. You are telling the program <em>“I want a variable. I’m calling it age.”</em></p>
+<h3>types</h3>
+<p>In some languages, you have to specify what kind or <strong><strong>type</strong></strong> of variable you want depending on what you want it to hold, like a decimal, a word, a whole number, or something else. Here are some common types in C#:</p>
+<p><strong><code>int</code></strong> stands for “integer”. These are whole numbers.</p>
+<p><strong><code>float</code></strong> stands for “floating decimal point”. These are decimals</p>
+<p><strong><code>string</code></strong> stands for “a string of characters”. These pieces of text</p>
+<h3>Initializing a variable</h3>
+<p>After you declare a variable you need to set it to some value. This is called initializing a variable.</p>
+<pre><code class="language-csharp">age = 22;
+</code></pre>
+<p>We can also set a variable equal to an equation, including with other variables.</p>
+<pre><code class="language-csharp">int myAge
+int mySistersAge;
+
+myAge = 54;
+mySistersAge = myAge - 3;
+</code></pre>
+<h3>Initializing and Declaring together</h3>
+<p>You can initialize and declare a variable at the same time.</p>
+<p>Example</p>
+<pre><code class="language-csharp">int myAge = 28;
+</code></pre>
+<h3>Public vs Private variables</h3>
+<p>The variables created directly in your class are called fields, and are our main way of exposing our code to the unity editor. Any fields marked <code>public</code> will be exposed to the unity editor, and their values are editable from there.</p>
+<p><img src="Week%202%20(Wednesday)%20-%20Intro%20to%20scripting%200dd044467f76448886c7b3d875eeb1bf/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>
+<p>Notes</p>
+<p><code>public</code> and <code>private</code> are called <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers">access modifiers</a></p>
+<p>If you do not add an access modifier, its default is <code>private</code></p>
+</li>
+</ul>
+<h2>Debugging using Debug.Log</h2>
+<p>When you get stuck while programming, you might be confused why your program is acting a certain way. Many times, it’s because your variable is not set to what you think it should be set to. We can use the print command to tell us the value of a variable. You can print text and/or the value of a variable. It will appear in the console.</p>
+<p>example</p>
+<pre><code class="language-csharp">Debug.Log(&quot;age is &quot; + age);
+</code></pre>
+<p><a href="https://giphy.com/embed/cFv3zac2OkvIak9gt7">https://giphy.com/embed/cFv3zac2OkvIak9gt7</a></p>
+<h2>Moving an object using Update()</h2>
+<h3>New type: <strong><strong><strong><strong><strong><strong><strong>Vector3</strong></strong></strong></strong></strong></strong></strong></h3>
+<p><strong>Vector3</strong> is like a container that holds 3 numbers</p>
+<p>You know what else is something that has 3 numbers… your position in 3d space!</p>
+<pre><code class="language-csharp">Vector3 newPosition = new Vector3(10f, 10f, -5f);
+</code></pre>
+<p>For more <em><strong><strong><strong>complex</strong></strong></strong></em> type, we have to use the <code>new</code> keyword to initialize them</p>
+<h2>transform</h2>
+<p>Your Gameobject’s position, rotation and scale are in <code>transform</code></p>
+<pre><code class="language-csharp">transform.position = newPosition;
+</code></pre>
+<h3>Moving an object over time</h3>
+<p>We are used to reading from left to right.</p>
+<p>But when you set the value of a variable you first take everything to the right of the equal sign and that value is placed in the variable.</p>
+<pre><code class="language-csharp">// Update is called once per frame
+void Update()
+{
+    
+	Vector3 positionChange = new Vector3(1f, 0f, 0f);
+	
+	transform.position = transform.position + positionChange;
+}
+
+</code></pre>
+<p>The line <code>transform.position = transform.position + positionChange</code> may look strange but it’s perfectly valid. We start on the right side of the equal sign, so we are taking the current value of <code>transform.position</code> , whatever it is, and adding the <code>positionChange</code> to it. And since we’re doing this in the Update() function, this happens every frame and we get movement.</p>
+<h1>Conditionals</h1>
+<p>In the above section we created a sprite, then changed its x location by having the <code>transform.position</code> property increase. The sprite kept moving to the right and eventually moved off the screen. How do we get it back if the program keeps running?</p>
+<p>A conditional is a test. We can state it like this: <em>If this thing is true, then do this:</em></p>
+<h3>If statement</h3>
+<p>The way we do this in code is with an <strong>IF statement</strong>.</p>
+<p>In <code>C#</code> it looks like this.</p>
+<pre><code class="language-csharp">string myName = 'Fran';
+
+if (myName == 'Fran'){
+  Debug.Log('Hi Fran');
+}
+</code></pre>
+<p>The <em>if</em> tells the software to evaluate whatever follows that in the <em>( )</em> parenthesis. If what is in the parenthesis is true, then it will do the action within the following <em>{ }</em> brackets.</p>
+<p>What’s with the double equal sign? Due to the way the software works, if you use a single equal sign, the program will immediately take anything to the right of the equal sign and place it in the variable on the left. And then since they are equal, the if statement will say, yes, it’s true and then always perform the actions in the following { } brackets. To get around this issue, when we are coding we use the double equal sign == which means <em>test if they are equal</em>.</p>
+<pre><code class="language-csharp">//NOTE THIS PROGRAM IS SHOWING A MISTAKE!
+string myName = 'Pierre';
+
+if (myName = 'Fran'){ //this line has a mistake! should be ==
+  Debug.Log('Hi Fran'); //This will print out because of the mistake above!
+}
+</code></pre>
+<p>Now that we know about conditionals, we can fix our moving sprite program from earlier. Now we will add a conditional statement. <strong>If</strong> the sprite goes off screen to the right, let’s have it appear again on the left side of the canvas. How do we do this? Let’s check where the ball’s x position is located.</p>
+<pre><code class="language-csharp">void Update()
+{
+    
+	Vector3 positionChange = new Vector3(1f, 0f, 0f);
+	
+	transform.position = transform.position + positionChange;
+
+  if (transform.position.x &gt; 100){
+    transform.positoin = new Vector(0, 0, 0);
+  }
+}
+</code></pre>
+<p>Final code for today’s lesson:</p>
+<pre><code class="language-csharp">// libraries: other code that is imported into our own code
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// the name of our script
+public class Move : MonoBehaviour
+{
+    // all our script code goes here
+
+    // variables
+
+    // declaring the variable
+    // hey i want a variable, and i'm going to call it age
+    // int age;
+
+    // initialize the variable
+    // age = 25;
+
+    int age = 25;
+
+    string myName = &quot;Kirby&quot;;
+
+    // Vector3: holds 3 numbers
+   
+    // Vector3(x, y, z);
+
+    // declared and initialized a certain position
+    Vector3 myPosition = new Vector3(10, 5, 2);
+
+    // the code in Start happens ONCE when the game starts
+    void Start()
+    {
+        // transform.position is the position of the gameobject
+
+        // change the position of Kirby to the new position
+        //transform.position = myPosition;
+    }
+
+    // the code in Update is run again and again and again forever
+    void Update()
+    {
+        // Vector3(x, y, z)
+        Vector3 changeInPosition = new Vector3(.01f, 0, 0);
+
+        transform.position = transform.position + changeInPosition;
+      
+    }
+
+}
+</code></pre>
+<h1>For Friday:</h1>
+<p>Make a sprite that we will be animating!</p>

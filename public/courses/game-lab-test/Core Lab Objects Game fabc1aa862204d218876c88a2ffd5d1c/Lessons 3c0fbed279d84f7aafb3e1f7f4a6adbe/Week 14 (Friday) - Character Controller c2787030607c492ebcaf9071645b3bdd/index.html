@@ -1,0 +1,83 @@
+<h1>Week 14 (Friday) - Character Controller</h1>
+<h1>Why Gold Player?</h1>
+<p>There other options for drop-in first person player controller like:</p>
+<ul>
+<li><a href="https://openupm.com/packages/io.igaryhe.firstpersondrifter/">First person drifter</a></li>
+<li><a href="https://assetstore.unity.com/packages/essentials/starterassets-firstperson-updates-in-new-charactercontroller-pac-196525">Unity’s official FirstPerson controller</a></li>
+</ul>
+<p>We’re looking at Gold Player because it’s the most updated package that is still open source</p>
+<h1>Basics</h1>
+<h3>The Prefab</h3>
+<p><img src="Week%2014%20(Friday)%20-%20Character%20Controller%20c2787030607c492ebcaf9071645b3bdd/Untitled.png" alt="Untitled"></p>
+<p>Brings together all the scripts and everything into one asset that you can drag and drop</p>
+<h3>Audio</h3>
+<h3>Camera</h3>
+<p>Little headbob</p>
+<h3>Colliders and triggers</h3>
+<p>Used for colliding but also ground detection</p>
+<h3>Graphics</h3>
+<p>Pretty simple, just a capsule. Can swap it out/turn it off</p>
+<h1>Main script</h1>
+<p><code>GoldPlayerController.cs</code></p>
+<h3>You can open the script!!</h3>
+<p><img src="Week%2014%20(Friday)%20-%20Character%20Controller%20c2787030607c492ebcaf9071645b3bdd/Untitled%201.png" alt="Untitled"></p>
+<p>The GoldPlayer code can seem pretty intimidating! Especially because it has a lot of boilerplate that looks like this:</p>
+<pre><code class="language-csharp">[RequireComponent(typeof(CharacterController))]
+    [DisallowMultipleComponent]
+    [AddComponentMenu(&quot;Gold Player/Gold Player Controller&quot;, 0)]
+    [HelpURL(&quot;https://github.com/Hertzole/gold-player&quot;)]
+    [SelectionBase]
+    public class GoldPlayerController : MonoBehaviour
+    {
+        [SerializeField]
+        [FormerlySerializedAs(&quot;m_Camera&quot;)]
+        [FormerlySerializedAs(&quot;camera&quot;)]
+        private PlayerCamera cam = new PlayerCamera();
+        [SerializeField]
+        [FormerlySerializedAs(&quot;m_Movement&quot;)]
+        private PlayerMovement movement = new PlayerMovement();
+        [SerializeField]
+        [FormerlySerializedAs(&quot;m_HeadBob&quot;)]
+        private PlayerBob headBob = new PlayerBob();
+        [SerializeField]
+        [FormerlySerializedAs(&quot;m_Audio&quot;)]
+        [FormerlySerializedAs(&quot;audio&quot;)]
+</code></pre>
+<p>These are <strong><strong><strong><strong><strong>Attributes</strong></strong></strong></strong></strong> that make this script a lot nicer to use in your project. There’s a lot of them! Just go one line at a time. For example:</p>
+<pre><code class="language-csharp">[RequireComponent(typeof(CharacterController))]
+</code></pre>
+<p>Makes it so you need to have the a CharacterController component</p>
+<p>More documentation: <a href="https://docs.unity3d.com/ScriptReference/RequireComponent.html">here</a></p>
+<p>Try removing the CharacterController component and see what happens!</p>
+<p>You can go through all these and use it as inspiration for you’re developing your own assets/packages!</p>
+<h2>Modules</h2>
+<p>The GoldPlayerController is split into different modules. For example the Camera:</p>
+<pre><code class="language-csharp"> 				[SerializeField]
+        [FormerlySerializedAs(&quot;m_Camera&quot;)]
+        [FormerlySerializedAs(&quot;camera&quot;)]
+        private PlayerCamera cam = new PlayerCamera();
+</code></pre>
+<p>But what’s PlayerCamera? And where does all this stuff come from?</p>
+<p><img src="Week%2014%20(Friday)%20-%20Character%20Controller%20c2787030607c492ebcaf9071645b3bdd/Untitled%202.png" alt="Untitled"></p>
+<p>Looking through the folders we find… PlayerCamera.cs!</p>
+<pre><code class="language-csharp">/// &lt;summary&gt;
+    /// Used to move a player camera around.
+    /// &lt;/summary&gt;
+    [System.Serializable]
+    public sealed class PlayerCamera : PlayerModule
+    {
+        [SerializeField]
+        [Tooltip(&quot;Determines if the player can look around.&quot;)]
+        [FormerlySerializedAs(&quot;m_CanLookAround&quot;)]
+        private bool canLookAround = true;
+        [SerializeField]
+        [Tooltip(&quot;Determines if the cursor should be locked.&quot;)]
+        [FormerlySerializedAs(&quot;m_ShouldLockCursor&quot;)]
+        private bool shouldLockCursor = true;
+        [SerializeField]
+        [Tooltip(&quot;If true, the transform Y will not rotate and only the camera will rotate.&quot;)]
+        private bool rotateCameraOnly = false;
+
+///...
+</code></pre>
+<p>This file is pretty overwhelming… we won’t go through this. Let’s take a look at PlayerMovement</p>

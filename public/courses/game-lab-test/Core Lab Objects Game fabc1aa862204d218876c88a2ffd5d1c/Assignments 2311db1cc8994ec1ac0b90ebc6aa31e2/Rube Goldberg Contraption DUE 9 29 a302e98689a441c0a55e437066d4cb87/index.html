@@ -1,0 +1,94 @@
+<h1>Rube Goldberg Contraption | DUE 9/29</h1>
+<aside>
+▶️ IN UNITY: Create a "Rube Goldberg Contraption" that plays out a sequence of successive actions using scripts and physics.
+</aside>
+<h3>Step 1: Initial Prototype</h3>
+<ul>
+<li>build a scene where (1) a ball rolls down a ramp, then (2) bounces off the floor, and then (3) hits some dominoes on a platform
+<ul>
+<li>(remember: to make something bouncey, you must set the ball to use a
+Physic Material with Bounciness = 1 and Bounce Combine = Maximum.)</li>
+</ul>
+</li>
+<li>test to see if it works</li>
+<li>once it works in the editor, build out to WebGL and see if it works in your browser (make sure you click &quot;Build and Run&quot;)
+<ul>
+<li>(WHY? if there's problems with the build, you'll want to find out as soon as possible)</li>
+</ul>
+</li>
+</ul>
+<h3>Step 2: Camera Triggers</h3>
+<ul>
+<li>create an invisible cube trigger object</li>
+<li>tag every Camera as &quot;MainCamera&quot;
+<ul>
+<li>double-check that your Main Camera is tagged as &quot;MainCamera&quot;</li>
+<li>create a Camera object, and also set its tag to &quot;MainCamera&quot;, and then disable it (uncheck the checkbox on the Camera <strong>component</strong>)</li>
+</ul>
+</li>
+<li>translate this pseudocode, and <strong>put the script on the trigger</strong>:</li>
+</ul>
+<pre><code>declare a public variable of type Camera called &quot;myCamera&quot;
+
+OnTriggerEnter:
+	set &quot;enabled&quot; on Camera.main to false
+	set &quot;enabled&quot; on myCamera to true
+
+</code></pre>
+<ul>
+<li>test the script, see if you can trigger a camera change when the ball bounces off the floor</li>
+<li>now that you have a working camera trigger, you can just duplicate this gameObject to make a new one!</li>
+</ul>
+<h3><strong>Step 3: (Optional) Camera Improvements</strong></h3>
+<p>This isn't required, but if you want, code some additional functionality for your camera switching system...</p>
+<ul>
+<li>to make the camera follow an object, translate this pseudocode and add it to the camera script:</li>
+</ul>
+<pre><code>declare a public variable of type Transform called &quot;followTarget&quot;
+
+Update:
+	if followTarget is not equal to null, then:
+		// what's the formula to get a vector from point A towards point B?
+		declare a variable of type Vector3 called &quot;newForwardDirection&quot;, and set it equal to: the vector from myCamera's transform's position towards followTarget's position
+		set myCamera's transform's forward equal to newForwardDirection
+
+</code></pre>
+<ul>
+<li>to visualize the camera triggers in the Unity Editor, translate this pseudocode and add it to the camera script:</li>
+</ul>
+<pre><code>// OnDrawGizmos is a special function that lets you draw helper gizmos in the Scene view
+OnDrawGizmos:
+	// google &quot;ondrawgizmos draw wire cube&quot;
+	draw a wire cube at this transform's position, with this transform's localScale
+	
+	if myCamera is not equal to null, then:
+		// google &quot;ondrawgizmos draw line&quot;
+		draw a line from this transform's position to myCamera's position
+
+</code></pre>
+<h2>Step 4: Plan your Machine</h2>
+<p>Spend 5 minutes to sketch (on paper) a plan for your rube goldberg machine</p>
+<ul>
+<li>feel free to watch rube goldberg machines on YouTube for inspiration
+<ul>
+<li>remember Unity's physics limitations: no soft bodies or ropes or cloths</li>
+</ul>
+</li>
+<li>don't just build in the editor randomly, it will take longer! but also don't wait too long before building in the editor</li>
+<li>sketching is part of the design and development process</li>
+<li>where will your different cameras and camera triggers go?</li>
+<li>Need ideas on what to add to your machine? <a href="https://docs.google.com/document/d/1FhFEx78z07cTDRN28kLb8rZLA5g7RVVg9nr3qU2JLdk/edit#heading=h.cdpscoxbvm7b">Check the brainstorm doc we made!</a></li>
+</ul>
+<h2>Step 5: build your machine</h2>
+<ul>
+<li>test often!</li>
+<li>when you are halfway done, do a test build in WebGL... trust me</li>
+<li>hint: if you need to test the second half of your machine, you'll
+have to watch the first half of your machine over and over... unless you made a cheat code that could teleport a ball to a special position?</li>
+<li>The whole 'machine' should have around 7 phases / stages</li>
+<li>you must have at least 3 camera changes, using physics triggers</li>
+<li><strong>No input beyond starting the contraption</strong></li>
+<li>there should be some kind of finale, activated by a physics trigger</li>
+<li>BONUS: add school-appropriate music, <a href="https://www.youtube.com/watch?v=qybUFnY7Y8w">no OK Go</a></li>
+<li>build out to WebGL, upload to <a href="http://itch.io">itch.io</a>, and submit it on Canvas</li>
+</ul>

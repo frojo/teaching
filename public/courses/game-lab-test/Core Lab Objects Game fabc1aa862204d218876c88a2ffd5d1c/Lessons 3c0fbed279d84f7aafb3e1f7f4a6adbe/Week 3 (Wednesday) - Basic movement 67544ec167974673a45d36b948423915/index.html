@@ -1,0 +1,210 @@
+<h1>Week 3 (Wednesday) - Basic movement</h1>
+<h1>Input</h1>
+<p>Getting input for your game can become a very complex process as your game’s size increases, or the scope of your release platforms increases. To more easily handle gamepads, key rebinding, and multiple players I recommend using something like <a href="https://learn.unity.com/tutorial/input-manager">unity’s input manager</a> or <a href="https://assetstore.unity.com/packages/tools/utilities/rewired-21676">Rewired</a>. But for less complicated input, there are some straightforward methods you can call from Unity’s Input class.</p>
+<h3>Keyboard Input</h3>
+<p>For keyboard input, the primary methods you will call for input are <code>Input.GetKey(KeyCode key)</code>, <code>Input.GetKeyDown(KeyCode key)</code>, and <code>Input.GetKeyUp(KeyCode key)</code>. You pass each of these methods a keyboard key to check, and then they will return true or false based on that keys input. Their difference is what exactly they are checking. <code>GetKey</code> will return true if the given key is currently pressed down, while <code>GetKeyDown</code> will return true for <em>only the first frame</em> that the given key is pressed down. Similarly, <code>GetKeyUp</code> will return true for the first frame that the given key is no longer being pressed.</p>
+<pre><code class="language-csharp">void Update()
+{
+		if (Input.GetKey(KeyCode.Space))
+    {
+        Debug.Log(&quot;Space key is currently pressed.&quot;);
+    }
+      
+		if (Input.GetKeyDown(KeyCode.Space))
+    {
+        Debug.Log(&quot;Space key was pressed.&quot;);
+    }
+
+    if (Input.GetKeyUp(KeyCode.Space))
+    {
+        Debug.Log(&quot;Space key was released.&quot;);
+    }
+}
+</code></pre>
+<p><a href="https://docs.unity3d.com/ScriptReference/KeyCode.html">You can find Keycodes for different keys here.</a></p>
+<h3>Mouse Input</h3>
+<p>Mouse buttons operate very similarly, just using the methods <code>Input.GetMouseButton(int button)</code>, <code>Input.GetMouseButtonDown(int button)</code>, <code>Input.GetMouseButtonUp(int button)</code></p>
+<p>Moving a mouse around is a different type of input because it isn’t represented as either on or off (true or false). You can get the mouse’s position from <code>Input.mousePosition</code>, which is a Vector3 variable that unity is always updating based on where your mouse is on the screen. <code>Input.mousePosition.x</code> is your mouse’s x coordinate, and <code>Input.mousePosition.y</code> is your mouse’s y coordinate. Important: These coordinates are based on your screen, and not on your game’s coordinates. If your mouse is in the bottom-left of your window it will have x and y coordinates of 0.</p>
+<p>Note:</p>
+<p>Getting your mouse’s world position is a little more involved, you have to have a reference to the camera you’re looking through, and use it’s <a href="https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html">ScreenToWorldPoint</a> method.</p>
+<p><a href="https://learn.unity.com/tutorial/input-manager">There’s also the <code>GetButton()</code> etc. functions that work with the Input Manager.</a> These are good for bigger games, but for now, the above functions are easier to use.</p>
+<h2>Basic movement</h2>
+<p>Now that we know how to get input, and we know from previous classes how to move sprites and other gameobjects, let’s program a script that gives us a basic character movement.</p>
+<p>The basic pattern we will use is:</p>
+<p><em><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>If the player presses a directional key, move the character in that direction.</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em></p>
+<p>In code, that could look like this:</p>
+<pre><code class="language-csharp">using UnityEngine;
+using System.Collections;
+
+public class Character : MonoBehaviour
+{
+	// we tweak this in the inspector
+	public float speed = 5;
+
+	void Update()
+	{
+			if (Input.GetKey(KeyCode.RightArrow))
+	    {
+	        // package our speed into a vector
+					Vector3 positionChange = new Vector3(speed, 0, 0);
+					
+					// add the position change to move the character
+					transform.position += positionChange;
+	    }
+	}
+}
+</code></pre>
+<h3>Now draw the rest of the owl</h3>
+<p>The above code lets you move a character in the positive X direction when pressing the right arrow key. How would you get movement using the 3 other arrow keys? How would you get movement using WASD?</p>
+<h2>Time.deltaTime</h2>
+<p>There is a very important variable that we haven’t talked about yet: <a href="https://docs.unity3d.com/ScriptReference/Time-deltaTime.html">Time.deltaTime</a></p>
+<p>Unity is a “variable framerate” game engine, which means that not all frames happen in even intervals. Unity <strong><strong><strong>tries</strong></strong></strong> to run at 60fps, but it often will run slower or faster.</p>
+<p>In order to make our code <strong><strong><strong><strong><strong>frame-independent</strong></strong></strong></strong></strong>, we use Time.deltaTime to “smooth” out movement (among other things) like so:</p>
+<pre><code class="language-csharp">transform.position += positionChange * Time.deltaTime;
+</code></pre>
+<p>This may not always make a difference (especially in smaller games) but it’s just a good thing to keep in the habit of.</p>
+<p>Note that you will need to probably tweak your speed to be a lot bigg</p>
+<h2>Controlling animation</h2>
+<p>Last class we learned how to create 2D animations in Unity. But let’s say we have a character, and we have different animations (walking, jumping, idling etc.) and we want to play those animations depending on our code. How do we do that?</p>
+<h3>Step 1: How to create a new animation clip and animation state</h3>
+<p>Up until now we’ve only been working one animation per character. Now we want to add a new one.</p>
+<ol>
+<li>
+<p>In your Project view, double click on the Animation contoller (looks like 3 squares overlapping) to open up the Animator view</p>
+</li>
+<li>
+<p>Right-click in the grid and select <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Create State</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+</li>
+<li>
+<p>Click on the new state and name your new state (e.g. walk, idle, jump)</p>
+</li>
+</ol>
+<p>Also note that the <strong><strong><strong><strong><strong><strong>Motion</strong></strong></strong></strong></strong></strong> is empty. We need to create a new Animation Clip</p>
+<ol start="4">
+<li>
+<p>Create a new animation Clip. This is surprisingly tricky! The easiest way I’ve found is to duplicate one you already have and then add the new sprites and delete the old ones</p>
+</li>
+<li>
+<p>Now that you have your Clip, you can drag it into that state’s Motion</p>
+</li>
+</ol>
+<h3>Step 2: Getting the Animator component (and others)</h3>
+<p>First we <em><strong>get the Animator component</strong></em> in our code. “Getting a component” is a fundamental thing in Unity that you need to do <em><strong><strong><strong><strong><strong><strong>all the time,</strong></strong></strong></strong></strong></strong></em> so listen up. Using the Animation component as an example, this is how we get the Animation component in code:</p>
+<pre><code class="language-csharp">Animator anim = gameObject.GetComponent&lt;Animator&gt;();
+</code></pre>
+<p>That line of code is basically saying “<strong><strong><strong><strong><strong><strong><strong><strong>get me the Animator Component on this GameObject”</strong></strong></strong></strong></strong></strong></strong></strong>. Look at these new <code>&lt; &gt;</code> characters, wow sharp. You would follow a similar pattern to get any kind of component, replacing <code>Animator</code> with the name of the Component you’re trying to get.</p>
+<h3>More in depth notes on GetComponent</h3>
+<p><code>myGameObject.GetComponent&lt;T&gt;()</code> is a method you can call on a gameobject, and it will return the specified. Replace <code>myGameObject</code> with the gameobject you want to get the component from, and replace <code>T</code> with the type of gameobject you would like</p>
+<p><code>myGameObject.GetComponents&lt;T&gt;()</code> operates like GetComponent, but will return all the components of the given type</p>
+<p><code>myGameObject.GetComponentInChildren&lt;T&gt;()</code> returns the first component of the given type found in any of its children</p>
+<p><code>myGameObject.GetComponentInParent&lt;T&gt;()</code> returns the component of the given type found in its parent</p>
+<ul>
+<li>
+<p>Notes</p>
+<p>If these cannot find any components that meet the criteria, they return null.</p>
+</li>
+</ul>
+<p>Usually we’ll set it up like this in our class:</p>
+<pre><code class="language-csharp">public class Character : MonoBehaviour
+{
+    Animator anim;
+
+    void Start()
+    {
+        anim = gameObject.GetComponent&lt;Animator&gt;();
+    }
+
+    void Update()
+    {
+			// other stuff
+		}
+}
+</code></pre>
+<h3>Step 3: Switch the animation depending on our input</h3>
+<pre><code class="language-csharp">public class Character : MonoBehaviour
+{
+    Animator anim;
+
+    void Start()
+    {
+        anim = gameObject.GetComponent&lt;Animator&gt;();
+    }
+
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // name has to match the name of your state!!
+            anim.Play(&quot;walk&quot;);
+        }
+		}
+}
+</code></pre>
+<p>Code Dump:</p>
+<pre><code class="language-csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Character : MonoBehaviour
+{
+
+    //float speed = .1f;
+
+    // public makes it appear in Unity!!!!
+    public float speed = 0f;
+
+    // declaring animator variable
+    Animator animator;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // initializing animator variable
+        // get me the Animator component on this GameObject
+        animator = gameObject.GetComponent&lt;Animator&gt;();
+        
+    }
+
+    // Update runs over and over again forever
+    void Update()
+{
+
+    Debug.Log(Time.deltaTime);
+
+	 // when i hold down the right arrow...
+	if (Input.GetKey(KeyCode.RightArrow))
+    {
+
+        Debug.Log(&quot;right arrow&quot;);
+        // Code to move lakitu to the right!
+        //                                     x, y, z
+        Vector3 positionChange = new Vector3(speed, 0, 0);
+        transform.position += positionChange * Time.deltaTime;
+
+        // also animate lakitu
+        animator.Play(&quot;lakitu_blinking&quot;);
+    }   
+
+	 // when i hold down the left arrow...
+	if (Input.GetKey(KeyCode.LeftArrow))
+    {
+        // Code to move lakitu to the left??? How??
+        //                                     x, y, z
+        Vector3 positionChange = new Vector3(speed, 0, 0);
+        transform.position -= positionChange * Time.deltaTime;
+    }   
+
+  
+
+}
+}
+</code></pre>
+<h2>Homework for Friday</h2>
+<h3>Read:</h3>
+<p>The “rules to make a flatgame”: <a href="https://itch.io/jam/flatgame-annual-2016">https://itch.io/jam/flatgame-annual-2016</a></p>
+<p>“Output Lag”: <a href="https://myfriendpokey.tumblr.com/post/160775928835/output-lag?is_related_post=1">https://myfriendpokey.tumblr.com/post/160775928835/output-lag?is_related_post=1</a></p>
+<h3>Watch:</h3>
+<p>10 Beautiful Postcards trailer: <a href="https://www.youtube.com/watch?v=g334qBswGKc">https://www.youtube.com/watch?v=g334qBswGKc</a></p>
+<h3>Play:</h3>
+<p>Some flatgames (play at least one): <a href="https://itch.io/jam/flatjam21/entries">https://itch.io/jam/flatjam21/entries</a></p>

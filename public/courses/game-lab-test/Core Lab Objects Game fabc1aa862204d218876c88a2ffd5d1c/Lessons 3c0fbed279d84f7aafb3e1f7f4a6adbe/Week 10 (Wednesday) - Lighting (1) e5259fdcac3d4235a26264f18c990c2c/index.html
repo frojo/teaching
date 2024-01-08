@@ -1,0 +1,56 @@
+<h1>Week 10 (Wednesday) - Lighting (1)</h1>
+<h1>Grading - submit your assignments in Canvas!</h1>
+<h1>Some level design things</h1>
+<p><a href="https://docs.google.com/presentation/d/1kENfZ5fQz9Sa38dd66qN9ENEv9XpcQX2xVhUKaBleg8/edit#slide=id.p">https://docs.google.com/presentation/d/1kENfZ5fQz9Sa38dd66qN9ENEv9XpcQX2xVhUKaBleg8/edit#slide=id.p</a></p>
+<h1>Materials/Shaders revisited</h1>
+<p>Some free Materials that Fran found on the asset store that could be nice to use:</p>
+<p><a href="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/StarterMaterialsUnrealistic.unitypackage">StarterMaterialsUnrealistic.unitypackage</a></p>
+<p>A nice realistic material asset pack: <a href="https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182">https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182</a></p>
+<h1>Lighting overview</h1>
+<h1><a href="https://docs.unity3d.com/Manual/Lighting.html">Types of lights</a></h1>
+<ul>
+<li>Point Light, a Light that’s located at a point in the Scene and emits light in all directions equally</li>
+<li>Spot Light, a Light that’s located at a point in the Scene and emits light in a cone shape</li>
+<li>Directional Light, a Light that’s located infinitely far away and emits light in one direction only</li>
+<li>Area Light, a Light that’s defined by a rectangle or disc in the
+Scene, and emits light in all directions uniformly across its surface
+area but only from one side of the rectangle or disc</li>
+</ul>
+<p>Directional and Points lights are most common</p>
+<h2><a href="https://docs.unity3d.com/Manual/lighting-window.html">The Lighting Window</a></h2>
+<p><img src="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/Untitled.png" alt="Untitled"></p>
+<p>The Lighting window (menu: Window &gt; Rendering &gt; Lighting) is the main control point for Unity’s lighting features. You can use the Lighting window to adjust settings related to the lighting in your Scene, and to optimise your precomputed lighting data for quality, bake time, and storage space.</p>
+<h3>Global Illumination</h3>
+<h3>Baked v Realtime</h3>
+<p><a href="https://docs.unity3d.com/Manual/LightModes.html">Light Modes</a></p>
+<p><strong>Baked:</strong> Unity pre-calculates the illumination from Baked Lights before runtime (aka playing the game)</p>
+<p><strong>Realtime:</strong> Unity calculates and updates the lighting of Realtime Lights every frame at runtime. Unity does not precompute any calculations for Realtime Lights.</p>
+<p><strong>Mixed:</strong> Unity performs some calculations for Mixed Lights in advance, and some calculations at runtime. For more information, see Mixed Lights</p>
+<h3><strong>How to Bake your lighting</strong></h3>
+<ol>
+<li>Select your 3D objects and turn on <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Contribute Global Illumination</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></li>
+</ol>
+<p><img src="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/Untitled%201.png" alt="Untitled"></p>
+<ol start="2">
+<li>Select your lights and change their Mode from Realtime to Baked</li>
+</ol>
+<p><img src="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/Untitled%202.png" alt="Untitled"></p>
+<ol start="3">
+<li>In your Lighting window in the Scene tab, click Generate Lighting (at the bottom)</li>
+</ol>
+<p><img src="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/Untitled%203.png" alt="Untitled"></p>
+<h1>Lighting Demo 1</h1>
+<p><a href="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/lightbulbdemo.unitypackage">lightbulbdemo.unitypackage</a></p>
+<h1>Lighting Demo 2</h1>
+<p><a href="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/mideival-room.unitypackage">mideival-room.unitypackage</a></p>
+<h1>Skybox</h1>
+<p>Some more skyboxes: <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353">https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353</a></p>
+<p>Modifiable skyboxes: <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576">https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576</a></p>
+<h1>Post processing</h1>
+<h1><strong>Resources</strong></h1>
+<p><a href="https://www.youtube.com/watch?v=_E0JXOZDTKA">Light Probes</a></p>
+<p><a href="https://www.youtube.com/watch?v=VnG2gOKV9dw">Progressive Lightmapper</a></p>
+<p><a href="https://www.youtube.com/watch?v=lhELeLnynI8">Reflection Probes</a></p>
+<p><a href="https://www.youtube.com/watch?v=4LhcNbFMkTw">Color Harmony</a></p>
+<p><a href="https://www.gamasutra.com/view/news/306966/Enjoy_a_bit_of_fresh_insight_into_how_Nintendo_built_Breath_of_the_Wild.php">Breath of the Wild Level Design</a></p>
+<p><a href="https://www.youtube.com/watch?v=iGH41AgcjP4">Robert Yang Talks about Half Life 1's Intro</a></p>

@@ -1,0 +1,193 @@
+<h1>Week 5 (Wednesday) - Loops, Arrays, UI</h1>
+<h1>For loops</h1>
+<p>Sometimes we want to do something many times. Over and over again.</p>
+<p>We use loops to do this.</p>
+<h3>For loop</h3>
+<p>Use the for loop to specify having an action occur a set number of times.</p>
+<pre><code class="language-csharp">for (int i = 0; i &lt; 4; i++) {
+    Debug.Log(&quot;Hello!&quot;);
+}
+</code></pre>
+<p>There are 3 sections in the for loop statement. First we initialize the temporary variable. Then we test to see if the statement is valid. Then we increment the temporary variable at the end of each loop.</p>
+<p>Another example, this time using our temporary variable</p>
+<pre><code class="language-csharp">for (int i = 0; i &lt; 100; i++) {
+  Debug.Log(i+&quot; bottles of beer on the wall, &quot;+i+&quot; bottles of beer...&quot;);
+}
+</code></pre>
+<p>Conclusion: For loops give us the power to repeat things tons of times. It’s one of the superpowers of the computer.</p>
+<h3>Note: different from the Update() loop!</h3>
+<p><code>Update()</code> is also a function that “loops”. But each pass of <code>Update()</code> happens about 1/60th of a second apart from each other. That’s a small amount of time for humans, but for computers that’s a lot of time.</p>
+<p>For loops, on the other hand, happen a <em><strong>lot</strong></em> faster, basically instantaneously.</p>
+<h2>When to use an if statement or for loop</h2>
+<p><strong>If you are testing whether something is true</strong></p>
+<p>When you are asking a question, use an if statement.</p>
+<p>Examples: Is my character off screen? Is the color black?</p>
+<p><strong>If you need to make lots of things, use a for a loop</strong></p>
+<h2>Arrays</h2>
+<p>An array is a list of similar objects, usually in a row or column.</p>
+<p>Arrays have length. The length equals the total number of values in the array.</p>
+<p>How to initialize an array:</p>
+<pre><code class="language-csharp">// this initializes an array of 4 &quot;empty&quot; values 
+// in this case, this will be 4 0s
+int[] myArray = new int[4];  
+
+// an array with the values 1, 2, 3, 4
+int[] myArray = {1, 2, 3, 4};
+</code></pre>
+<pre><code class="language-csharp">string[] students = {&quot;Lizzy&quot;, &quot;Gabriel&quot;, &quot;Frida&quot;,
+                     &quot;Xiona&quot;, &quot;Lauren&quot;, &quot;Amal&quot;,
+                     &quot;Malika&quot;, &quot;Xinyi&quot;, &quot;Xiara&quot;,
+                     &quot;Lily&quot;, &quot;Eve&quot;, &quot;Tyne&quot;};
+</code></pre>
+<p>The <strong>length</strong> of students is 12 since there are 12 entries.</p>
+<p><code>Debug.Log(students.Length); // 12</code></p>
+<p><strong>The first element is at index 0.</strong></p>
+<p><code>Debug.Log(students[0]); // Lizzy</code></p>
+<p>Counting up from 0, we can see that the last element in the array is the 4th.</p>
+<p><code>Debug.Log(students[4]); // Lauren</code></p>
+<p>Extrapolating from here, this tells us that the last element in any array is length - 1.</p>
+<pre><code class="language-csharp">Debug.Log(students[students.Length - 1]);
+</code></pre>
+<h2>Arrays and loops together forever</h2>
+<p>If loops let us do something many times, and arrays are a list of many things… hold on, what if we use them together?</p>
+<p>Arrays and loops are best friends.</p>
+<p>Let’s say we wanted to print out all our students’ names. Well we could do this:</p>
+<pre><code class="language-csharp">Debug.Log(students[0]);
+Debug.Log(students[1]);
+Debug.Log(students[2]);
+Debug.Log(students[3]);
+...
+Debug.Log(students[11]);
+</code></pre>
+<p>Or! we could replace those 12 lines of code with:</p>
+<pre><code class="language-csharp">for (var i = 0; i &lt; students.Length; i++){
+    Debug.Log(students[i]);
+}
+</code></pre>
+<p>Example Code:</p>
+<pre><code class="language-csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    // how to creat an array
+    // type  name              size
+    // int[] numbers = new int[4];
+    // int[] numbers = {0, 0, 0, 0};
+
+    int[] numbers = {56, 23, 9, 3};
+    
+    
+    //                        0          1       2        3      4
+    string[] grocieries = {&quot;carrot&quot;, &quot;potato&quot;, &quot;rice&quot;, &quot;beef&quot;, &quot;stock&quot;};
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        // Debug.Log(grocieries.Length); // 4
+
+        // Debug.Log(grocieries[0]); // carrot
+        // Debug.Log(grocieries[1]); // potato
+
+        // Debug.Log(grocieries[grocieries.Length - 1]); // beef
+
+        for (int i = 0; i &lt; grocieries.Length; i++) {
+            Debug.Log(grocieries[i]);
+        }
+
+        // for (int i = 0; i &lt; allGameObjects.Length; i++) {
+        //     allGameObjects[i].Update();
+        // }
+        
+        // for (int i = 0; i &lt; 10000; i++) {
+        
+        //     // any code goes here
+        //     Debug.Log(&quot;Hello! we have said Hello &quot; + i + &quot; times&quot;); 
+
+           
+        // }
+
+        // Debug.Log(&quot;Goodbye&quot;);
+
+        
+        
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Debug.Log(&quot;Hello!&quot;); 
+
+        // for (int i = 0; i &lt; 100; i++) {
+        //     blinkingLight[i].Blink();
+        // }
+        
+    }
+}
+</code></pre>
+<h1>UI Basics</h1>
+<p>Sometimes when making a game, you want to communicate certain information to the player, but it’s tricky to convey that information in the world of the game. That’s where UI comes in!</p>
+<h3>Screenspace vs Worldspace</h3>
+<p>UI exists on literally a different plane as the game world. We often call this UI-land the <strong><strong><strong><strong><strong><strong>screenspace</strong></strong></strong></strong></strong></strong> in contrast to <strong><strong><strong><strong><strong>worldspace</strong></strong></strong></strong></strong>.</p>
+<p><img src="Week%205%20(Wednesday)%20-%20Loops,%20Arrays,%20UI%209c48a844b2764e62888b05fbcce86176/Untitled.png" alt="Untitled"></p>
+<p>If you know film terminology, it’s helpful to think of the UI as <strong><strong><strong><strong><strong>undiagetic.</strong></strong></strong></strong></strong> In other words, not a part of the world of the game, but outside of it.</p>
+<p>One thing about UI is that it’s really deep! Slick menus, good-looking textboxes take time and ingenuity to design and implement.</p>
+<h2>The Canvas</h2>
+<p>The Canvas is like a screen that is overlayed on top of your game world. All your UI elements will go in your Canvas</p>
+<h3>How to create the Canvas</h3>
+<p>Left Click Hierarchy -&gt; UI -&gt; Canvas</p>
+<p>This will also create an object called EventSystem. Don’t delete that!!!</p>
+<h3>How to create UI Text</h3>
+<p>Hierarchy left click -&gt; UI -&gt;  Text ( TextMeshPro)</p>
+<p>This is a similar but different thing to the text that we created for our flatgames!!</p>
+<p>Remember, UI text is in <em><strong><strong><strong><strong><strong>screenspace</strong></strong></strong></strong></strong></em> while the other text was in <strong><strong>worldspace</strong></strong></p>
+<h3>Rect Transform</h3>
+<p>Objects in your Canvas have a special Transform called the Rect Transform. This is a different way of tracking position/size etc. and it makes it easier for working with UI elements.</p>
+<p><strong><strong><strong><strong><strong><strong><strong>Anchors</strong></strong></strong></strong></strong></strong></strong> let you control how the UI will change based on the Aspect Ratio of the screen (e.g. a square screen vs a widescreen)</p>
+<p>Anchors are part of what makes UI hard!</p>
+<p>Anchors take a bit to get used to, but keep playing with it to build an intuitive understanding</p>
+<p><img src="Week%205%20(Wednesday)%20-%20Loops,%20Arrays,%20UI%209c48a844b2764e62888b05fbcce86176/Untitled%201.png" alt="Untitled"></p>
+<h3>Changing text through a script</h3>
+<ol>
+<li>Include the TextMeshPro and Unity UI libraries at the top of your file</li>
+</ol>
+<pre><code class="language-csharp">using TMPro;
+using UnityEngine.UI;
+</code></pre>
+<ol>
+<li>In your class, declare the Text component (familiar?) and assign it in the Inspector, and then use it like this</li>
+</ol>
+<pre><code class="language-csharp">// Make sure to assign this in the inspector!!
+public TextMeshProUGUI changeThisText;
+
+//...... later on in the code
+
+changeThisText.text = &quot;this is some new text!&quot;;
+</code></pre>
+<h3>Button</h3>
+<p>To create: UI → Button - TextMeshPro</p>
+<h3>OnClick</h3>
+<p>This is how you make Buttons do things when you click on them!</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>NOTE!! You must create your own functions to use the OnClick</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p><img src="Week%205%20(Wednesday)%20-%20Loops,%20Arrays,%20UI%209c48a844b2764e62888b05fbcce86176/Untitled%202.png" alt="Untitled"></p>
+<h3>How to create your own function</h3>
+<p>For now, we will create <strong><strong>void</strong></strong> functions. You don’t have to worry yet about what this means.</p>
+<p>But this is how you write your own function:</p>
+<pre><code class="language-csharp">public void MyCustomFunction() {
+	// you can put any code that you want in this functoin
+	Debug.Log(&quot;this is my new function!&quot;);
+**}**
+</code></pre>
+<p>Note the <code>public</code> and <code>void</code> keywords</p>
+<p>You can also create a function with an <strong><strong><strong><strong>argument.</strong></strong></strong></strong></p>
+<pre><code class="language-csharp">void ChangeText(string new_text) {
+	changeThisText.text = &quot;this is some new text!&quot;;
+}
+</code></pre>
+<h3>VerticalLayoutGroup</h3>
+<h1>For this Friday (9/29)</h1>
+<p>Read divination in ancient games: <a href="https://www.ancient-origins.net/news-history-archaeology/knucklebones-0017149">https://www.ancient-origins.net/news-history-archaeology/knucklebones-0017149</a></p>
+<p>Play: a Buzzfeed quiz <a href="https://www.buzzfeed.com/quizzes">https://www.buzzfeed.com/quizzes</a></p>
