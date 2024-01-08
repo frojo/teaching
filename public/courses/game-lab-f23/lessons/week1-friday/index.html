@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 1 (Friday) - Cameras, Sprites, Exporting</h1>
+<h2>First, some Unity tricks</h2>
+<h3>snap to vertex with 'v'</h3>
+<p>hold v while in the move tool, and you can drag a mesh by one of its vertices and snap it to vertices on another mesh</p>
+<p><img src="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/vsnap.gif" alt="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/vsnap.gif"></p>
+<p>Sometimes this can let you snap something to a surface</p>
+<h3>alt + left click drag</h3>
+<p>pivot the camera around whatever its current focus is</p>
+<p><img src="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/Untitled.png" alt="Untitled"></p>
+<p>Camera tips and tricks</p>
+<h3>Any Unity questions so far?</h3>
+<h2>Materials</h2>
+<p>Materials are how you make the 3D objects in your scene have color and other texture!</p>
+<h3>How to create a new material:</h3>
+<p>Left click in project view -&gt; Create -&gt; Material</p>
+<p>(Note: a material is a type of <em><strong><strong>asset</strong></strong></em>)</p>
+<h3>How to edit the material (e.g. the color):</h3>
+<p>Select your material in the Project panel and tweak things in the Inspector</p>
+<h3><strong>How to apply the material:</strong></h3>
+<p>Drag the material onto the object</p>
+<h2>Camera basics</h2>
+<p><a href="https://docs.unity3d.com/Manual/class-Camera.html">Camera Unity docs</a></p>
+<h3>Clear Flags</h3>
+<p>What do you want the background of your scene to be? Every frame, Unity draws the background, and then it draws everything in the scene on top of it.</p>
+<p><strong><strong><strong><strong><strong><strong><strong>Skybox:</strong></strong></strong></strong></strong></strong></strong> A “skybox” - for now just the default sky with grey underneath.</p>
+<p><strong>Solid Color:</strong> Choose a color as the background.</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Depth Only:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> (don’t use this unless you know what you’re doing)</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Don’t Clear:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> Don’t redraw the background every frame.</p>
+<p><img src="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/Untitled%201.png" alt="Untitled"></p>
+<h3>Projection</h3>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Perspective</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> for a perspective point of view that we all know and love</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Orthogonal</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> for no perspective (aka isometric)</p>
+<p><img src="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/Untitled%202.png" alt="Untitled"></p>
+<p><strong>Tip for positioning the camera: ctrl + shift + f</strong></p>
+<p>move the currently selected object directly to the position of the scene view camera</p>
+<p><img src="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/ctrlshiftf.gif" alt="Week%201%20(Friday)%20-%20Cameras,%20Sprites,%20Exporting%20c7c1098e51a749bfbe596fa942417b91/ctrlshiftf.gif"></p>
+<p>Useful for if you want to position the game camera a certain way!</p>
+<h2>Exporting/building and uploading to itch</h2>
+<p><em><strong>Building</strong></em> your game means making a file that you can play on other people’s computers <em><strong><strong><strong>without</strong></strong></strong></em> them needing to have Unity.</p>
+<h3>How to build for web</h3>
+<p>This is how to make a file/folder that can be played in the browser</p>
+<ol>
+<li>File -&gt; Build Settings</li>
+<li>Build Settings -&gt; add Open Scenes</li>
+<li>Platform -&gt;WebGL</li>
+<li>Build or Build and Run</li>
+<li>Create a Folder outside your project.</li>
+<li>Folder name -&gt;select folder</li>
+</ol>
+<h3>How to prepare your game for itch</h3>
+<p><a href="http://itch.io">*itch.io</a> needs web games to be zipped up before you upload them*</p>
+<p>Right Click on your games folder (the one that contains the index.html file directly in it) and then click Send to -&gt; Compressed (zipped) folder</p>
+<p>Everything in the build folder needs to be included in the build.</p>
+<h3>Uploading to itch</h3>
+<ul>
+<li>Create an Itch.io Account</li>
+<li>Top right corner arrow -&gt; upload new project</li>
+<li>Upload files -&gt; select your zipped up folder</li>
+<li>Check “This file will be played in the browser”</li>
+<li>Embed options -&gt; auto detect size.</li>
+<li>Set to public</li>
+</ul>
+<p>Make sure to customize your itch page too!</p>
+<h2>Package Manager</h2>
+<p>The Package Manager is a really powerful part of Unity that lets you download more functionality into Unity!</p>
+<h3>How to open the Package Manager</h3>
+<p>Window → Package Manager</p>
+<h3>How to download a new package</h3>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Important!</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> Select “Packages: My Assets” then select “Unity Registry”</p>
+<ul>
+<li>This will let you browse packages that are <em><strong>not</strong></em> in your project yet</li>
+</ul>
+<h2>Sprite Renderer</h2>
+<p>First, make sure you have the 2D package installed.</p>
+<p>In the Package Manager, find and click 2D, then click Install</p>
+<p><strong><strong><strong><strong><strong>This actually installs a bunch of 2d package</strong></strong></strong></strong></strong></p>
+<h3>How to create a sprite in your 3D space (with a Sprite Renderer)</h3>
+<p><em><strong>Note:</strong> This is different than create a sprite gameobject for a 2d game</em></p>
+<ol>
+<li>Create an empty gameobject</li>
+<li>Select the new gameobject</li>
+<li>In the Inspector, click <strong>Add Component</strong></li>
+<li>Search for “Sprite Renderer” and add it</li>
+</ol>
+<p>Congratulations, you just added your first Component!</p>
+<p><strong>Key variables in this component are</strong></p>
+<ul>
+<li>Sprite: Takes a .png and renders that when on screen (you have to import the png into your project first)</li>
+<li>Color: Takes a color, tints the sprite that color</li>
+<li>Order in Layer: Tells unity which 2D image should be rendered on top</li>
+</ul>
+<h3>Resources:</h3>
+<p>Sam’s slides for this lesson: https://docs.google.com/presentation/d/1XYFl9NJMcRVmxFo6tuXV5fVL7Bry9sXofxuylLr_1kc/edit#slide=id.g278e23bcd27_1_89</p>
+<p>Tricks taken from <a href="https://www.notion.so/Unity-Tips-That-Literally-Saved-My-Life-97d7af0e4d0a4d5b8b868503b9564f94?pvs=21">Danny Hawk’s page</a></p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

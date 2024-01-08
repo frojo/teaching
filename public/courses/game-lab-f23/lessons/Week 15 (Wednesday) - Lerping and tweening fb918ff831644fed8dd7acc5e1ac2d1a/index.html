@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 15 (Wednesday) - Lerping and tweening</h1>
+<h1>Agenda</h1>
+<ul>
+<li>Lerping/Tweening</li>
+<li>The rest of the semester
+<ul>
+<li>Showcase on Monday with outside guests! Have something to show</li>
+<li>BUT games are technically due on Friday! (so you can keep working on it)</li>
+<li>No class on the 13th!</li>
+<li>Just ONE autobiographical game - Studio and Lab game are the same!</li>
+</ul>
+</li>
+<li>Playtesting</li>
+</ul>
+<h1>Lerping aka Linear interpolation</h1>
+<p>Linear interpolation, or &quot;Lerping&quot;, in Unity can be accomplished with the <code>Mathf.Lerp()</code> function. This function takes three parameters: the start value, the end value, and the interpolation value (which should be between 0 and 1). Here's an example:</p>
+<pre><code class="language-csharp">float startValue = 0f;
+float endValue = 10f;
+float interpolationValue = 0.5f;
+
+float result = Mathf.Lerp(startValue, endValue, interpolationValue);
+
+// result will be 5, because it's halfway between startValue and endValue
+
+</code></pre>
+<p>This function can be used in a variety of situations. For instance, you can use it to smoothly transition a game object from one position to another.</p>
+<h1>Tweening</h1>
+<p>Tweening can often be used to make your games, feel more polished or professional.</p>
+<p>Tweening in Unity can be accomplished using the Animation system, or by using external libraries such as DOTween. Here's an example of how to perform a simple tween using DOTween:</p>
+<pre><code class="language-csharp">using DG.Tweening;
+
+public class Example : MonoBehaviour
+{
+    private void Start()
+    {
+        // Move the game object to position (10, 10, 10) over 3 seconds
+        transform.DOMove(new Vector3(10, 10, 10), 3);
+    }
+}
+
+</code></pre>
+<p>In this example, the game object to which this script is attached will move to the position (10, 10, 10) over a period of 3 seconds. Tweening like this can be used to create smooth, complex animations with minimal coding.</p>
+<p>DOTween is the standard way of doing tweening in unity.</p>
+<p><a href="http://dotween.demigiant.com/documentation.php">http://dotween.demigiant.com/documentation.php</a></p>
+<h1>Animation curves and easing types</h1>
+<p>Nice cheatsheet for different types of easings: <a href="https://easings.net/">https://easings.net/</a></p>
+<p><a href="https://www.youtube.com/watch?v=Fy0aCDmgnxg">Juice it or lose it</a></p>
+<ul>
+<li>They talk a lot about animation curves and how to use it in your games</li>
+</ul>
+<p>Using it in a real game</p>
+<h1>Play testing!</h1>
+<p>Get your game play tested by at least 3 different people!!</p>
+<p>(Get at least 3 play tests in before you ask for help with your game)</p>
+<h1>FREE WORK TIME!</h1>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

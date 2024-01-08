@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 13 (Wednesday) - Project organization</h1>
+<h1>Multi-scene benefits for development</h1>
+<p>Each person has a dev scene</p>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled.png" alt="Untitled"></p>
+<h1>Game Managers</h1>
+<h1>Singletons</h1>
+<p>Singletons are scripts that represent things in our game that there is <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>only one of</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>Examples:</p>
+<ul>
+<li>Game Manager</li>
+<li>Level Manager</li>
+<li>Save / Load Manager</li>
+<li>Audio manager</li>
+<li>Player probably</li>
+</ul>
+<h2>How to singleton in Unity</h2>
+<p>The <strong><strong><strong><strong><strong><strong>static</strong></strong></strong></strong></strong></strong> keyword creates an instance of the class</p>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%201.png" alt="Untitled"></p>
+<p>And if we also use <strong>DontDestroyOnLoad</strong>…</p>
+<pre><code class="language-csharp">public class GameManager : MonoBehaviour
+{
+		// make this class a singleton
+    public static GameManager instance;
+
+    void Awake()
+    {
+				// makes this script persistent across scene switches
+        if (instance != null)
+            Destroy(instance);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+    }
+}
+</code></pre>
+<p>Adding this code to our singleton scripts does two things.</p>
+<ul>
+<li>Allows us to switch between scenes without accidentally duplicating our script.</li>
+<li>Allows us to access our singletons with one line of code.</li>
+</ul>
+<pre><code class="language-csharp">GameManager.instance.RestartGame();
+</code></pre>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%202.png" alt="Untitled"></p>
+<p>Credit: Sam Leigh</p>
+<h1>Project Organization</h1>
+<h2>Scene Hierarchy organization examples</h2>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%203.png" alt="Untitled"></p>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%204.png" alt="Untitled"></p>
+<h2>Ways of organizing assets</h2>
+<h3>By type</h3>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%205.png" alt="Untitled"></p>
+<p>but honestly i don’t really like this</p>
+<p>because you can just do this in the search bar</p>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%206.png" alt="Untitled"></p>
+<h3>By in-game character/location/system</h3>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%207.png" alt="Untitled"></p>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%208.png" alt="Untitled"></p>
+<h1>Coding best practices</h1>
+<h2>Naming</h2>
+<p><em><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>The hardest thing in programming is naming</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em> - A programming sutra</p>
+<p>Names of scripts and variables should be descriptive.</p>
+<p>And they should be succinct.</p>
+<p>Well named code is <em><strong><strong><strong>self-documenting</strong></strong></strong></em></p>
+<p>For naming Scripts: Capitalized, two words</p>
+<p><img src="Week%2013%20(Wednesday)%20-%20Project%20organization%202c2a1759025246e7ad88f134b5a10adc/Untitled%209.png" alt="Untitled"></p>
+<h2>A comment on comments</h2>
+<p>Comments help make the code easier to understand…</p>
+<ul>
+<li>for teammates</li>
+<li>for future you</li>
+</ul>
+<p>Code comments are useful for several purposes. A code comment can…</p>
+<ul>
+<li>explain what a particular function does</li>
+<li>explain something which might not be obvious to the reader</li>
+<li>clarify your intention behind a certain line or block of code</li>
+<li>serve as a reminder to change something in the future.</li>
+</ul>
+<p>Some good code imo:</p>
+<pre><code class="language-csharp">using UnityEngine;
+
+namespace ThirdPerson {
+
+/// an ik limb for the character model
+public sealed class CharacterHead: MonoBehaviour, CharacterLimb {
+    // -- deps --
+    /// the containing character
+    Character m_Container;
+
+    /// the animator for this limb
+    Animator m_Animator;
+
+    // -- tuning --
+    [Header(&quot;tuning&quot;)]
+    [Tooltip(&quot;the rotation speed of the ik position&quot;)]
+    float m_RotationSpeed;
+
+    [Tooltip(&quot;the radius of the look sphere&quot;)]
+    [SerializeField] float m_Radius;
+
+    [Tooltip(&quot;the duration of the ik blend when dropping target&quot;)]
+    [SerializeField] float m_BlendInDuration;
+
+    [Tooltip(&quot;the duration of the ik blend when dropping target&quot;)]
+    [SerializeField] float m_BlendOutDuration;
+
+    // -- props --
+    /// if the head is looking towards something
+    bool m_IsActive;
+
+    /// the blending weight for this head
+    float m_Weight;
+
+    /// the head bone transform; manipulated by ik
+    Transform m_HeadBone;
+
+    /// the neck bone transform
+    Transform m_NeckBone;
+
+    /// the current ik rotation of the head
+    Quaternion m_CurrRotation;
+
+    /// the destination ik rotation of the head
+    Quaternion m_DestRotation;
+
+    // -- lifecycle --
+    void Awake() {
+        // set deps
+        m_Container = GetComponentInParent&lt;Character&gt;();
+    }
+
+    void Update() {
+        var delta = Time.deltaTime;
+
+        m_IsActive = m_Container.State.Next.IsOnGround;
+
+        // destination rotation follows input
+        var destFwd = m_Container.Input.Move;
+        if (destFwd == Vector3.zero) {
+            destFwd = m_NeckBone.forward;
+        }
+
+        m_DestRotation = Quaternion.LookRotation(destFwd, m_NeckBone.up);
+
+        // lerp the weight
+        var isBlendingIn = m_IsActive;
+        m_Weight = Mathf.MoveTowards(
+            m_Weight,
+            isBlendingIn ? 1.0f : 0.0f,
+            delta / (isBlendingIn ? m_BlendInDuration : m_BlendOutDuration)
+        );
+
+        // lerp the ik position towards destination
+        if (m_IsActive) {
+            m_CurrRotation = Quaternion.RotateTowards(
+                m_CurrRotation,
+                m_DestRotation,
+                m_RotationSpeed * Time.deltaTime
+            );
+        }
+    }
+
+    // -- commands --
+    /// initialize this limb w/ an animator
+    public void Init(Animator animator) {
+        // set deps
+        m_Animator = animator;
+
+        // set props
+        m_HeadBone = m_Animator.GetBoneTransform(HumanBodyBones.Head);
+
+        // if no headbone, this character has no head, destroy self
+        if(m_HeadBone == null) {
+            Debug.LogWarning($&quot;[CharacterHead] destroying head for character: {m_Animator.transform.parent.name}&quot;);
+            Destroy(this.gameObject);
+            return;
+        }
+
+        m_NeckBone = m_HeadBone.parent;
+        m_CurrRotation = m_HeadBone.rotation;
+    }
+
+    /// .
+    public void LookAt(Vector3 target) {
+        m_DestRotation = Quaternion.LookRotation(
+            Vector3.Normalize(target - m_HeadBone.position),
+            m_HeadBone.up
+        );
+    }
+
+    /// applies the limb ik
+    public void ApplyIk() {
+        m_Animator.SetLookAtWeight(
+            m_Weight
+        );
+
+        if (m_Weight != 0.0f) {
+            var t = transform;
+            m_Animator.SetLookAtPosition(RotToPos(m_CurrRotation));
+        }
+    }
+
+    // -- queries --
+    /// .
+    Vector3 RotToPos(Quaternion rot) {
+        return m_HeadBone.position + rot * Vector3.forward * m_Radius;
+    }
+
+    // -- gizmos --
+    void OnDrawGizmos() {
+        if (!m_IsActive) {
+            return;
+        }
+
+        var currPos = RotToPos(m_CurrRotation);
+        var destPos = RotToPos(m_DestRotation);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(
+            currPos,
+            radius: 0.2f
+        );
+
+        Gizmos.DrawLine(
+            m_HeadBone.position,
+            currPos
+        );
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(
+            destPos,
+            radius: 0.15f
+        );
+
+        Gizmos.DrawLine(
+            m_HeadBone.position,
+            destPos
+        );
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(
+            currPos,
+            destPos
+        );
+    }
+}
+
+}
+</code></pre>
+<p>Great post on how to write good comments: <a href="https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/">https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/</a></p>
+<h2>Final thoughts</h2>
+<p>There’s a balance: organizing takes time and energy. But it can save time and energy later!</p>
+<p>Practice exercise: For your next game, be <em><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Extremely Organized</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em></p>
+<p>Go over the top with it, very detailed hierarchies, every asset filed away nicely.</p>
+<p>This will probably be overkill, but it will help you see in what ways being organized is helpful and save you time. This in turn will inform your level and types of organization in future projects.</p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

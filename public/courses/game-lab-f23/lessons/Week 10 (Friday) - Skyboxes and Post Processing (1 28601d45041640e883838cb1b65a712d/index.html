@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 10 (Friday) - Skyboxes and Post Processing (1)</h1>
+<h1>Grading - submit your assignments in Canvas!</h1>
+<h1>Skybox</h1>
+<p>Let’s shamelessly reuse Sam’s slides</p>
+<p><a href="https://docs.google.com/presentation/d/1Yf8q_hdPIYCnOAJRshgV1fxUpqiK_23HSODzzzgAfoY/edit#slide=id.g295dd7ffa80_0_7">https://docs.google.com/presentation/d/1Yf8q_hdPIYCnOAJRshgV1fxUpqiK_23HSODzzzgAfoY/edit#slide=id.g295dd7ffa80_0_7</a></p>
+<p>![Untitled](Week%2010%20(Friday)%20-%20Skyboxes%20and%20Post%20Processing%20(1%2028601d45041640e883838cb1b65a712d/Untitled.png)</p>
+<p>![Untitled](Week%2010%20(Friday)%20-%20Skyboxes%20and%20Post%20Processing%20(1%2028601d45041640e883838cb1b65a712d/Untitled%201.png)</p>
+<p>Some skyboxes: <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353">https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353</a></p>
+<p>Modifiable skyboxes: <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576">https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576</a></p>
+<h1>Post processing</h1>
+<p>How to install</p>
+<p>![Untitled](Week%2010%20(Friday)%20-%20Skyboxes%20and%20Post%20Processing%20(1%2028601d45041640e883838cb1b65a712d/Untitled%202.png)</p>
+<h2>How to set up post-processing</h2>
+<p>Create an empty object</p>
+<ul>
+<li>Set the layer to “Water” or create your own</li>
+<li>Add a post processing volume component</li>
+<li>Set IsGlobal to true</li>
+<li>Add a new Post Processing volume profile</li>
+</ul>
+<p>Go to your Camera.</p>
+<ul>
+<li>Add a Post Processing Layer Component</li>
+<li>Set Layer to the same as your Post Processing object</li>
+</ul>
+<h1>Very quick mention of Rendering Pipelines, Shader Graph</h1>
+<p>Unity rendering is a deep deep rabbit hole you can go down!</p>
+<p>Unity offers the following render pipelines:</p>
+<ul>
+<li>The <a href="https://docs.unity3d.com/Manual/built-in-render-pipeline.html">Built-in Render Pipeline</a> is Unity’s default render pipeline. It is a general-purpose render pipeline that has limited options for customization.</li>
+<li>The <a href="https://docs.unity3d.com/Manual/universal-render-pipeline.html">Universal Render Pipeline (URP)</a> is a Scriptable Render Pipeline that is quick and easy to customize,
+and lets you create optimized graphics across a wide range of platforms.</li>
+<li>The <a href="https://docs.unity3d.com/Manual/high-definition-render-pipeline.html">High Definition Render Pipeline (HDRP)</a> is a Scriptable Render Pipeline that lets you create cutting-edge, high-fidelity graphics on high-end platforms.</li>
+<li>You can create your own <a href="https://docs.unity3d.com/Manual/srp-custom.html">custom render pipeline</a> using Unity’s Scriptable Render Pipeline API.</li>
+</ul>
+<h2>Shader graph</h2>
+<p>How to install</p>
+<p>![Untitled](Week%2010%20(Friday)%20-%20Skyboxes%20and%20Post%20Processing%20(1%2028601d45041640e883838cb1b65a712d/Untitled%203.png)</p>
+<p>If you want to get into shaders in Unity, this is, I think, the best video on the internet: <a href="https://www.youtube.com/watch?v=kfM-yu0iQBk">https://www.youtube.com/watch?v=kfM-yu0iQBk</a></p>
+<h1>Lighting Demo 2</h1>
+<p><a href="Week%2010%20(Wednesday)%20-%20Lighting%20(1)%20e5259fdcac3d4235a26264f18c990c2c/mideival-room.unitypackage">mideival-room.unitypackage</a></p>
+<h1><strong>Resources</strong></h1>
+<p><a href="https://www.youtube.com/watch?v=_E0JXOZDTKA">Light Probes</a></p>
+<p><a href="https://www.youtube.com/watch?v=VnG2gOKV9dw">Progressive Lightmapper</a></p>
+<p><a href="https://www.youtube.com/watch?v=lhELeLnynI8">Reflection Probes</a></p>
+<p><a href="https://www.youtube.com/watch?v=4LhcNbFMkTw">Color Harmony</a></p>
+<p><a href="https://www.gamasutra.com/view/news/306966/Enjoy_a_bit_of_fresh_insight_into_how_Nintendo_built_Breath_of_the_Wild.php">Breath of the Wild Level Design</a></p>
+<p><a href="https://www.youtube.com/watch?v=iGH41AgcjP4">Robert Yang Talks about Half Life 1's Intro</a></p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

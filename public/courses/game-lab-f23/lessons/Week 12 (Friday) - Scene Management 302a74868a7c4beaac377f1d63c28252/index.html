@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 12 (Friday) - Scene Management</h1>
+<p><img src="Week%2012%20(Friday)%20-%20Scene%20Management%20302a74868a7c4beaac377f1d63c28252/Untitled.png" alt="Untitled"></p>
+<h1>Submit your assignments on canvas!</h1>
+<h1>Tell me what you want to learn</h1>
+<h1>Scene Management</h1>
+<h2>Why have multiple scenes?</h2>
+<ul>
+<li>
+<ul>
+<li>Multiple levels</li>
+<li>Cutscenes</li>
+</ul>
+</li>
+</ul>
+<h3>Do you have to always make another Scene?  Why can’t we just teleport the player?</h3>
+<p>Often, it’s just easier to teleport the player etc. Just do whatever is easiest for you as the developer!  Scenes should be a tool that makes life easier.</p>
+<h2>Creating a new scene</h2>
+<p>You create a new scene from the File menu: (<strong>File</strong> &gt; <strong>New Scene</strong>) or the <strong>Ctrl/Cmd + n</strong> shortcut.</p>
+<p><img src="Week%2012%20(Friday)%20-%20Scene%20Management%20302a74868a7c4beaac377f1d63c28252/Untitled%201.png" alt="Untitled"></p>
+<h2><a href="https://docs.unity3d.com/Manual/MultiSceneEditing.html">Multi-Scene editing</a></h2>
+<p><img src="Week%2012%20(Friday)%20-%20Scene%20Management%20302a74868a7c4beaac377f1d63c28252/Untitled%202.png" alt="Untitled"></p>
+<h3>Add scenes</h3>
+<p>To add a new scene to your project, do one of the following:</p>
+<ul>
+<li>Right click to open the menu of a scene asset in the <strong>Project window</strong> and select <strong>Open Scene Additive</strong>.</li>
+<li>Drag one or more scenes from the Project window into the Hierarchy window.</li>
+</ul>
+<p><img src="Week%2012%20(Friday)%20-%20Scene%20Management%20302a74868a7c4beaac377f1d63c28252/Untitled%203.png" alt="Untitled"></p>
+<p>Note: There it’s always exactly one <strong>Active Scene.</strong> This is the one where new Gameobjects will be created in</p>
+<h2>Changing Scenes during Play (with scripting)</h2>
+<h3><strong><a href="https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.html">SceneManager</a>.LoadScene()</strong></h3>
+<p>You can call of this function to load a different scene.</p>
+<pre><code class="language-csharp">SceneManager.LoadScene(&quot;SomeScene&quot;, LoadSceneMode.Single);
+</code></pre>
+<p>Use LoadSceneMode to choose what type of Scene loads when using SceneManager.LoadScene. The available modes are Single and Additive.</p>
+<p>Single mode loads a standard Unity Scene which then appears on its own in the Hierarchy window. Additive loads a Scene which appears in the Hierarchy window while another is active.</p>
+<p>The default mode is Single.</p>
+<pre><code class="language-jsx">using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ExampleClass : MonoBehaviour
+{
+    void OnTriggerEnter(Collider other)
+    {
+        // Only specifying the sceneName or sceneBuildIndex will load the Scene with the Single mode
+        SceneManager.LoadScene(&quot;OtherSceneName&quot;, LoadSceneMode.Additive);
+	}
+}
+</code></pre>
+<h3><strong>DontDestroyOnLoad</strong></h3>
+<p>If you want a game object to persist between seems, you can use <strong><code>DontDestroyOnLoad</code></strong></p>
+<pre><code class="language-jsx">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// Object.DontDestroyOnLoad example.
+
+// This  script make this or that this game object be destroyed when 
+
+public class DontDestroy : MonoBehaviour
+{
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+}
+</code></pre>
+<h2><a href="../Week%2012%20(Friday)%20-%20Scene%20Management%20302a74868a7c4beaac377f1d63c28252/">Building a game with multiple scenes</a></h2>
+<p><img src="Week%2012%20(Friday)%20-%20Scene%20Management%20302a74868a7c4beaac377f1d63c28252/Untitled%204.png" alt="Untitled"></p>
+<p><strong>To add all currently open scenes to the list</strong>: Select <strong>Add Open Scenes</strong>. You can also drag scenes from your <strong>Project</strong> window into the list.</p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

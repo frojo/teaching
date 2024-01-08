@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Bonus - Majora’s Mask Breakdown</h1>
+<h2>Intro</h2>
+<p>why break down a game?</p>
+<p>why majora’s mask?</p>
+<p>So much retrospective, analytical content</p>
+<h1>How to dig into a game</h1>
+<p>Development history</p>
+<p>Youtube docs</p>
+<ul>
+<li>VG Docs</li>
+<li>Didyouknowgaming
+<ul>
+<li>They digest/translate a lot of old Japanese magazines</li>
+</ul>
+</li>
+</ul>
+<h3>Cutting room floor</h3>
+<p>Wiki that has a bunch of assets and development info for games</p>
+<ul>
+<li>Gathered unused assets</li>
+</ul>
+<h3>Modding communities</h3>
+<p>People who like to mod games know a lot about (and document) the inner workings of games</p>
+<p><a href="https://wiki.cloudmodding.com/mm/Main_Page">Cloudmodding</a></p>
+<p>Decompilation</p>
+<p>A type of reverse engineering. Analysing the compiled binary data that is on the cartridge to produce human-readable code that has the same result.</p>
+<p><a href="https://zelda64.dev/games/mm#what-is-decompilation-what-is-matching-decompilation">Majora’s Mask decomp project</a></p>
+<p><a href="https://github.com/zeldaret/mm/blob/main/docs/tutorial/contents.md">Documentation of how code works</a></p>
+<h1>Majora’s Mask intro</h1>
+<p>Nintendo 64</p>
+<p>Came out one year after Ocarina of Time (a Classic videogame)</p>
+<p>12th best selling Nintendo game of all time</p>
+<p>Probably the <em><strong>weirdest,</strong></em> most unique Zelda game</p>
+<ul>
+<li>Dark</li>
+<li>3 Day cycle</li>
+<li>Masks</li>
+</ul>
+<h1>Story summary</h1>
+<p>Let VG Docs introduce it: <a href="https://youtu.be/BnKYz6QXiAU?t=751">https://youtu.be/BnKYz6QXiAU?t=751</a></p>
+<h3>3 day cycle</h3>
+<p>Majora’s Mask takes place in a Groundhog Day style time loop. In 3 days</p>
+<h1>Development history</h1>
+<p>1 year of development - really short!</p>
+<p>Re-used Ocarina of Time engine and assets</p>
+<ul>
+<li>3d Models and animations and textures and lighting</li>
+<li>Sounds</li>
+<li>Running/jumping code and 3d camera</li>
+<li>Level editor</li>
+<li>Dialogue system</li>
+<li>Cutscene system</li>
+<li>Ocarina system</li>
+</ul>
+<p>It’s like using Fungus instead of having to code your own Fungus</p>
+<p>Despite this, really stressful. People pulling all nighters, having nightmares.</p>
+<ul>
+<li>Stress leaked into the game
+<ul>
+<li>Deku cutscene</li>
+<li>ex. Mayor “don’t bring my wife into this”</li>
+</ul>
+</li>
+</ul>
+<h3>Timeline</h3>
+<p>Concepting</p>
+<p><img src="Bonus%20-%20Majora%E2%80%99s%20Mask%20Breakdown%20a56c3ae9888140dea27bf104a03c1600/Untitled.png" alt="Untitled"></p>
+<p>(Fun fact the Moon didn’t have a face until the last few months of development</p>
+<p>Programming started February 2003</p>
+<p>Release</p>
+<p>April 2004 (Japan)</p>
+<p>November 2004 (Rest of the world)</p>
+<h3>People</h3>
+<p>Eiji Aonuma</p>
+<p>Playfully antagonistic a relationship with Shigeru Miyamoto (creator of Mario and Nintendo head honcho)</p>
+<ul>
+<li></li>
+</ul>
+<p>How many people worked on it?</p>
+<p>half of the amount of ocarina of time</p>
+<h1>The guts</h1>
+<p>Majora’s Mask was coded using the C programming language</p>
+<h3><a href="https://github.com/zeldaret/mm/blob/main/docs/tutorial/beginning_decomp.md">Actors</a></h3>
+<p>Actors are all things that are not part of the actual level</p>
+<p>ex. Link, NPCs, objects</p>
+<p>Breakdown of Major’s receptionist</p>
+<p>Update() and Draw() callbacks</p>
+<h1>Graphics</h1>
+<p>N64 overview</p>
+<p>“Reality chip”</p>
+<p>Optimization: low poly model is swapped in when camera is farther away</p>
+<p>shaders?</p>
+<p>lighting?</p>
+<p>Lights</p>
+<p><a href="https://github.com/zeldaret/mm/blob/ed4da0ecef698ad0112c7cdf575368ac3c61903b/include/z64light.h">https://github.com/zeldaret/mm/blob/ed4da0ecef698ad0112c7cdf575368ac3c61903b/include/z64light.h</a></p>
+<h1>Assets</h1>
+<p>How 3d Assets were made</p>
+<p>Textures go a long way</p>
+<p><a href="https://www.models-resource.com/nintendo_64/thelegendofzeldamajorasmask/">Models Resource</a></p>
+<p><a href="https://www.models-resource.com/nintendo_64/legendofzeldaocarinaoftime/">Ocarina of Time MR</a></p>
+<p><a href="https://www.spriters-resource.com/nintendo_64/thelegendofzeldamajorasmask/">Spriters Resource</a></p>
+<p><a href="https://www.spriters-resource.com/nintendo_64/thelegendofzeldaocarinaoftime/">OoT SR</a></p>
+<p><a href="https://www.spriters-resource.com/nintendo_64/thelegendofzeldaocarinaoftime/sheet/36754/">Ex. font was reused</a></p>
+<h1>References</h1>
+<p><a href="https://youtu.be/BnKYz6QXiAU">The Legend of Zelda: Majora's Mask (Documentary) | 20th Anniversary Retrospective</a></p>
+<p><a href="https://tcrf.net/The_Legend_of_Zelda:_Majora%27s_Mask">Majora's Mask The cutting room floor</a></p>
+<p><a href="https://wiki.cloudmodding.com/mm/Main_Page">CloudModding</a></p>
+<p><a href="https://zelda64.dev/games/mm">Decompilation</a></p>
+<p><a href="https://www.youtube.com/watch?v=jF5a6ltOsK0">Link Models over the years</a></p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

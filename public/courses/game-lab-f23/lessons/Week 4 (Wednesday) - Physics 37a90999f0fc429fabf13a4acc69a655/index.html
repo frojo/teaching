@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 4 (Wednesday) - Physics</h1>
+<p>Unity has a very robust physics system built into it. You can make use it to make games that play with physics or have some sort of physics simulation in them. Let’s learn how to do physics stuff in Unity!</p>
+<h3>Unity package for this class:</h3>
+<p><a href="Week%204%20(Wednesday)%20-%20Physics%2037a90999f0fc429fabf13a4acc69a655/week4-physics.unitypackage">week4-physics.unitypackage</a></p>
+<p>Download the unity package and drag it into a Unity project to import it!</p>
+<h1>First:</h1>
+<p><strong>What do games use physics for?</strong></p>
+<ul>
+<li>bouncing objects</li>
+<li>falling objects</li>
+<li>gameplay mechanics</li>
+<li>realism, interactivity</li>
+<li>characters interacting with objects</li>
+<li>water physics</li>
+</ul>
+<p><strong>What do games use colliders for?</strong></p>
+<ul>
+<li>detecting when objects touch</li>
+<li>hitboxes</li>
+<li>for triggering loading, checkpoints, cutscenes etc.</li>
+<li>for more realistic experiences</li>
+</ul>
+<h1>How physics works in games (Sam’s slides)</h1>
+<p><a href="https://docs.google.com/presentation/d/1VpxDoAxgPsFmb9LblH8sIGMZmFucjwM-XTE1o44u2ds/edit#slide=id.g27e0e886c68_0_50">https://docs.google.com/presentation/d/1VpxDoAxgPsFmb9LblH8sIGMZmFucjwM-XTE1o44u2ds/edit#slide=id.g27e0e886c68_0_50</a></p>
+<p>(btw Sam posts all their slides in the Discord and they’re very good, you should check them out)</p>
+<h1>2D vs 3D</h1>
+<p>Unity has two physics systems. One for 2D physics, one for 3D physics. For the most part, these systems work very similarly, each having their own components. If you learn how to do something in one system, it probably works in the other one.</p>
+<p><strong>2D physics and 3D physics can’t interact with one another.</strong></p>
+<h1>Colliders</h1>
+<p>To be a part of the physics system, an object needs a Collider. There are many shapes of colliders, both in 2d and 3d. All Collider shapes are essentially the same, except for the shape they construct.</p>
+<h3>How to add a collider to a GameObject</h3>
+<p>Colliders are components</p>
+<ul>
+<li>Click on the object you want to add a collider to and click Add Component. Then search for “collider&quot;</li>
+</ul>
+<p>Unity will add a collider for you automatically when you create a 3d object.</p>
+<p><strong>How to choose the right collider</strong></p>
+<p>There’s a lot of options! Over time, you’ll know which collider is appropriate for what you want. When you’re choosing what collider to use, some things to consider:</p>
+<ul>
+<li>
+<p>If you’re working in 2D, use a 2D collider</p>
+</li>
+<li>
+<p>What general shape is your sprite? Try to use the simplest collider shape that still makes sense for your sprite. For most things, you can usually use Box or Circle</p>
+</li>
+</ul>
+<p><img src="Week%203%20(Friday)%20-%20Text%20and%20Audio%201c773de8f34b4d229ff7cf51c7344b2f/Untitled%203.png" alt="Untitled"></p>
+<h3>Note: Mesh Collider</h3>
+<p>Takes the mesh of a 3D object, then create a collision box</p>
+<p><a href="https://lh6.googleusercontent.com/DGRkTcRCxJ-ijUzgyXC7Y590yCVJznA-CJ5fJEdMlff1K9kY1a281ZhpAENvIfhLEsztc2ARlkZ64E-u3LWYTkpPzQB24_PEp41vEPGPrcUE8prw2Yzzs3iL6sjH89hsQdtQCDJLEyQrMlHQzhMDu_lsfw=s2048">https://lh6.googleusercontent.com/DGRkTcRCxJ-ijUzgyXC7Y590yCVJznA-CJ5fJEdMlff1K9kY1a281ZhpAENvIfhLEsztc2ARlkZ64E-u3LWYTkpPzQB24_PEp41vEPGPrcUE8prw2Yzzs3iL6sjH89hsQdtQCDJLEyQrMlHQzhMDu_lsfw=s2048</a></p>
+<p><a href="https://lh6.googleusercontent.com/gdesqCeIpZyzckxUvv9T8laMWygap8Gx80_BW_Ern490kgmhI7nKorNMWadmo9IZlHKq98YpL4h7k7scZZN4J6LreT0nSJYaUKzGhmZdio-lfoW06YWxSD-j4fvl3u9FHXAWh5XMpxxjzTfWUp9Y-e3tOQ=s2048">https://lh6.googleusercontent.com/gdesqCeIpZyzckxUvv9T8laMWygap8Gx80_BW_Ern490kgmhI7nKorNMWadmo9IZlHKq98YpL4h7k7scZZN4J6LreT0nSJYaUKzGhmZdio-lfoW06YWxSD-j4fvl3u9FHXAWh5XMpxxjzTfWUp9Y-e3tOQ=s2048</a></p>
+<p>Depending on the detail of the model, can be incredibly bad for performance…</p>
+<p>Meshes that have convex elements to it, need to have convex toggle checked.</p>
+<p><a href="https://lh5.googleusercontent.com/hhKJCjX48lEt3EiwlPHaA3uXL0uUwit_EIbhGldJfNXybiMz7VxbwBTbCkonSJaACHRUNZMtGc_GqqxgzaavX9Hwl5xmJq5y5o9izUSRGVy9QdFTQ1BD9MMKL7vko6caOVEhRbjJbs74BWwQnERgZ0ywlg=s2048">https://lh5.googleusercontent.com/hhKJCjX48lEt3EiwlPHaA3uXL0uUwit_EIbhGldJfNXybiMz7VxbwBTbCkonSJaACHRUNZMtGc_GqqxgzaavX9Hwl5xmJq5y5o9izUSRGVy9QdFTQ1BD9MMKL7vko6caOVEhRbjJbs74BWwQnERgZ0ywlg=s2048</a></p>
+<h3>Editing the collider</h3>
+<p>Now that you have a collider on your GameObject, select it. You should be able to see the collider as a thin green outline. You can click <strong><strong><strong><strong><strong>Edit Collider</strong></strong></strong></strong></strong> to manually edit it (usually, Unity should make the collider the right size automatically though)</p>
+<h1>Rigidbody</h1>
+<p>For a GameObject to be a part of the physics system, it <strong><strong>also</strong></strong> needs a Rigidbody component.</p>
+<p>Add a Rigidbody in the same way as you add any other component: select your object and click <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Add Component</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> in the inspector</p>
+<h2>Basic Rigidbody options</h2>
+<p><strong><strong><strong>Mass:</strong></strong></strong> Control how heavy the object is</p>
+<p><strong><strong><strong><strong><strong>Drag:</strong></strong></strong></strong></strong> Making this higher will make it so the object is flowing through water instead of air</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Use Gravity:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> Whether or not you want this object to be affected by gravity</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Is Kinematic:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> Turns this off to create an object not affected by physics (e.g. walls, ground, static things)</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Constraints:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> Limit the movement of the object in some ways!</p>
+<p><strong>Note: Rigidbody2D works a little different, but it’s mostly the same</strong></p>
+<h1>Physics Material</h1>
+<p>Change how the Game Object will be affected by the collision…controls how bouncy things are for example.</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Note: This is different from the Material that we learned about earlier</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<h3>How to create a Physic Material</h3>
+<p>****************************************Asset &gt; Create &gt; Physic Material (****************************************You might have to scroll down a lot to find Physic Material)</p>
+<p>You can drag this Material into your objects <strong><strong><strong><strong><strong><strong><strong><strong>Material</strong></strong></strong></strong></strong></strong></strong></strong> slot (in the Collider component)</p>
+<h1>Colliders and code: OnCollisions and OnTriggers</h1>
+<p>In code, we can use Colliders for two different sorts of <em>events</em>:  Collisions and Triggers</p>
+<ul>
+<li><strong>Collisions</strong> are when two objects physically bonk into eachother. Collisions use the Unity physics system. <em><strong>Collisions don’t work super well when we move objects ourselves with code (as we’ve been doing so far).</strong></em> Think physics-y games like Angry Birds. This is what colliders do by default</li>
+<li><strong>Triggers</strong> are when we use colliders to <em>activate</em> things or make things happen when two object overlap. To enable this, you check the <strong>Is Trigger</strong> box in the collider</li>
+</ul>
+<p>Let’s look at Collision events first</p>
+<h3>Using Collisions in code</h3>
+<p>There are 3 Collision functions you need to know. These are special <strong><strong><strong><strong>built-in</strong></strong></strong></strong> functions in Unity. You need to include these special functions on a script that <strong>IS CURRENTLY ON</strong> the Object you want to track.</p>
+<p><code>OnCollisionEnter</code> is called the first frame your collider or rigidbody begins touching another rigidbody or collider. <code>OnCollisionStay</code> is called every frame they’re touching, and <code>OnCollisionLeave</code> is called the frame they are no longer touching.</p>
+<pre><code class="language-jsx">public class CollisionExample :MonoBehaviour
+{
+    //Moves thisGameObject 2 units a second in the forward direction
+	  void Start()
+    {
+    }  
+
+		void Update()
+    {
+    }
+
+    // Called when this object starts colliding with anothre object
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(&quot;First frame of collision with another object&quot;);
+    }
+
+		// Called *while* this object is colliding
+		 private void OnCollisionStay(Collision other)
+    {
+        Debug.Log(&quot;Currently still colliding with another object&quot;);
+    }
+
+	// Called when this object stops colliding with anothre object
+		private void OnCollisionExit(Collision other)
+    {
+        Debug.Log(&quot;We just stopped colliding with another object&quot;);
+    }
+}
+</code></pre>
+<p>What is <code>Collider other</code> ? This is basically the <em><strong><strong>other</strong></strong></em> object that is being collided with.</p>
+<h3>Using Triggers in code</h3>
+<p>You can also use colliders as *******<em><strong><strong><strong><strong><strong><strong><strong><strong>Triggers</strong></strong></strong></strong></strong></strong></strong></strong>.</em> This means that the objects won’t bonk/collide into each other — they’ll pass through each other. But you can still use these colliders to <em><strong><strong><strong>trigger</strong></strong></strong></em> code when colliders are overlapping</p>
+<p>There are special <code>OnTrigger</code> functions that are called in the <em><strong><strong>event</strong></strong></em> that two objects with colliders overlap</p>
+<p><code>OnTriggerEnter</code> is called the first frame your collider begins overlapping another collider. <code>OnTriggerStay</code> is called every frame they’re overlapping, and <code>OnTriggerLeave</code> is called the frame they are no longer overlapping.</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Important: Make sure you check Is Trigger for these functions to be called</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<pre><code class="language-csharp">public class Example :MonoBehaviour
+{
+    //Moves thisGameObject 2 units a second in the forward direction
+	  void Start()
+    {
+    }  
+
+		void Update()
+    {
+
+    }
+
+		private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(&quot;Entering the cube!&quot;);
+
+				Camera.main.enabled = false;
+    }
+   
+
+		private void OnTriggerStay(Collider other)
+    {
+        Debug.Log(&quot;In the cube!&quot;);
+    }
+
+	// Called when this object stops overlapping with anothre object
+		private void OnTriggerExit(Collider other)
+    {
+        Debug.Log(&quot;Just left the cube!&quot;);
+    }
+}
+</code></pre>
+<h2>2D OnCollisions and OnTriggers</h2>
+<p>Both the <code>OnCollision</code>... and <code>OnTrigger</code>... functions have their 2D versions that you must use if you’re doing physics in 2D.</p>
+<p>They’re the same functions but with 2D at the end of them. **<em><strong><strong><strong>And</strong></strong></strong>i</em> ******************************** also use Collider2D instead of Collider.</p>
+<p>E.g.:</p>
+<pre><code class="language-jsx">		 private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(&quot;First frame of overlap with &quot; + other.name);
+    }
+</code></pre>
+<p>Notice the <code>Collider2D</code></p>
+<h1>For next <em><strong>Wednesday</strong></em> (9/27):</h1>
+<p>Play:</p>
+<ul>
+<li><a href="http://www.ohmygiraffe.com/">Oh my Giraffe</a></li>
+<li>Check out any other games you want from these slides: https://docs.google.com/presentation/d/1dAcWYDkn27GPooFfQv2J6d01XWbkui_YCPo3Kh5BKjY/edit?usp=sharing</li>
+</ul>
+<p>Watch:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=NwPIoVW65pE">Designing with Physics: Bend the Physics Engine to Your Will</a></li>
+<li><a href="https://food.game/">Nour</a> (scroll down and <a href="https://www.youtube.com/watch?v=Zjxr5Q6eLIE">watch the trailer</a>)</li>
+</ul>
+<h1>For <em>next Friday</em> (9/29):</h1>
+<p><a href="../../Assignments%202311db1cc8994ec1ac0b90ebc6aa31e2/Rube%20Goldberg%20Contraption%20DUE%209%2029%20a302e98689a441c0a55e437066d4cb87/">Rube Goldberg Contraption | DUE 9/29</a></p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

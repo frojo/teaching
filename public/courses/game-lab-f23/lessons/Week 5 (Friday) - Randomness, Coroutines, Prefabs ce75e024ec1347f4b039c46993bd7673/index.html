@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 5 (Friday) - Randomness, Coroutines, Prefabs</h1>
+<h2>Divination/fortune telling games</h2>
+<h1>Review…</h1>
+<p>Functions</p>
+<p>Button OnClick()</p>
+<p>Arrays</p>
+<h3>Quick tip:</h3>
+<p>If you declare an array as public, you can manipulate it in the inspector</p>
+<pre><code class="language-csharp">public string[] ingredients;
+</code></pre>
+<p><img src="Week%205%20(Friday)%20-%20Randomness,%20Coroutines,%20Prefabs%20ce75e024ec1347f4b039c46993bd7673/Untitled.png" alt="Untitled"></p>
+<h1>Randomness</h1>
+<p>Unity has a pretty nice <a href="https://docs.unity3d.com/ScriptReference/Random.html">Random</a> class that lets you randomize certain things.</p>
+<p>For example…</p>
+<h2><a href="https://docs.unity3d.com/ScriptReference/Random.Range.html">Random.Range()</a></h2>
+<p><code>Random.Range(float min, float max)</code> lets you get a random number between a specified range.</p>
+<p>Let’s say you wanted to get a random number between 0 and 13:</p>
+<pre><code class="language-csharp">float randomNumber = Random.Range(0f, 13f);
+</code></pre>
+<p>Note that this will give you a <code>float</code> (a decimal). If you wanted an integer you could do:</p>
+<pre><code class="language-csharp">int randomInt = Random.Range(0, 14);
+// note that it's 14 instead of 13
+</code></pre>
+<p>You can use this to choose a random string from an array of strings</p>
+<pre><code class="language-csharp">string[] shopping_types = {&quot;Wandering Shopper&quot;, &quot;carrot&quot;, &quot;pepper&quot;};
+
+string randomIngredient = ingredients[Random.Range(0, ingredients.Length))];
+</code></pre>
+<h1>Coroutines</h1>
+<p>Coroutines are special functions that execute code over time.</p>
+<p>They’re used to code anything that is time dependent,</p>
+<ul>
+<li>timers</li>
+<li>dialog</li>
+<li>turn order in strategy games</li>
+<li>Enemy Behavior</li>
+</ul>
+<p>Coroutines look like other functions, except they have an <code>IEnumerator</code> type.</p>
+<p>Here’s how you would write a coroutine that prints something after 5 seconds.</p>
+<pre><code class="language-csharp">using UnityEngine;
+using System.Collections;
+
+public class ExampleClass : MonoBehaviour
+{
+
+    void Start()
+    {
+        // - After 0 seconds, prints &quot;Starting 0.0 seconds&quot;
+        
+        print(&quot;Starting &quot; + Time.time + &quot; seconds&quot;);
+        // Start function WaitAndPrint as a coroutine.
+        StartCoroutine(WaitAndPrint(););
+    }
+
+    private IEnumerator WaitAndPrint()
+    {
+        yield return new WaitForSeconds(5);
+
+				// - After 5 seconds, prints &quot;Coroutine ended: 2.0 seconds&quot;
+
+        print(&quot;Coroutine ended: &quot; + Time.time + &quot; seconds&quot;);
+    }
+}
+</code></pre>
+<h1>For next Friday (10/06)</h1>
+<p><a href="../../Assignments%202311db1cc8994ec1ac0b90ebc6aa31e2/Fortune%20Teller%20Generator%20DUE%2010%2006%2056c4d742dcd94b5db898cb91377f95bf/">Fortune Teller Generator | DUE 10/06</a></p>
+<p>Design:</p>
+<ul>
+<li>What’s the concept?</li>
+<li>Are there characters?</li>
+<li>What genre is the text going to be?</li>
+<li>What emotions do you want to stir?</li>
+<li>What font are you thinking about?</li>
+</ul>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

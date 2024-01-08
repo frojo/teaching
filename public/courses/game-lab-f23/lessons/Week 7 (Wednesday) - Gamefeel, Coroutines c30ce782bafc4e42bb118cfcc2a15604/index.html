@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 7 (Wednesday) - Gamefeel, Coroutines</h1>
+<h1>Intro to gamefeel and juice</h1>
+<p>Gamefeel/juice slides: https://docs.google.com/presentation/d/1Hgp1N2V34PxN6_Y69ka4uiskv2Hs0iqGIp5EFO7Sl-c/edit?usp=sharing</p>
+<h1>Let’s code some screenshake!</h1>
+<p>Download and import this unity package!</p>
+<p><a href="Week%207%20(Wednesday)%20-%20Gamefeel,%20Coroutines%20c30ce782bafc4e42bb118cfcc2a15604/screenshake-starting-assets.unitypackage">screenshake-starting-assets.unitypackage</a></p>
+<h1>Coroutines</h1>
+<p>Coroutines are special functions that execute code over time.</p>
+<p>They’re used to code anything that happens over time</p>
+<ul>
+<li>timers</li>
+<li>dialog</li>
+<li>turn order in strategy games</li>
+<li>Enemy Behavior</li>
+<li>screenshake and other juicy things</li>
+</ul>
+<p>Coroutines look like other functions, except they have an <code>IEnumerator</code> type.</p>
+<p>Here’s how you would write a coroutine that prints something after 5 seconds.</p>
+<pre><code class="language-csharp">using UnityEngine;
+using System.Collections;
+
+public class ExampleScript : MonoBehaviour
+{
+
+    void Start()
+    {
+        // - After 0 seconds, prints &quot;Starting 0.0 seconds&quot;
+        
+        print(&quot;Starting &quot; + Time.time + &quot; seconds&quot;);
+        // Start function WaitAndPrint as a coroutine.
+        StartCoroutine(WaitAndPrint());
+    }
+
+    private IEnumerator WaitAndPrint()
+    {
+        yield return new WaitForSeconds(5);
+
+				// - After 5 seconds, prints &quot;Coroutine ended: 2.0 seconds&quot;
+
+        print(&quot;Coroutine ended: &quot; + Time.time + &quot; seconds&quot;);
+    }
+}
+</code></pre>
+<h1>Screenshake code</h1>
+<pre><code class="language-csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Screenshake : MonoBehaviour
+{
+
+    public int length;
+    public float intensity;
+
+    void Start()
+    {
+
+    }
+
+    public void DoShakeScreen() {
+        StartCoroutine(ShakeScreen());
+    }
+
+    private IEnumerator ShakeScreen()
+    {
+
+        for (int frames = 0; frames &lt;= length; frames++)
+        {
+            transform.position += new Vector3(Random.Range(-intensity, intensity),
+                                              Random.Range(-intensity, intensity),
+                                             0);
+            yield return null; 
+        }
+
+ 
+    }
+
+}
+</code></pre>
+<h1>Final project</h1>
+<p><a href="Week%207%20(Wednesday)%20-%20Gamefeel,%20Coroutines%20c30ce782bafc4e42bb118cfcc2a15604/screenshake-final-assets.unitypackage">screenshake-final-assets.unitypackage</a></p>
+<h1>For this Friday (10/13)</h1>
+<p>Watch “Juice it or lose it”: <a href="https://www.youtube.com/watch?v=Fy0aCDmgnxg&amp;t=359s">https://www.youtube.com/watch?v=Fy0aCDmgnxg&amp;t=359s</a></p>
+<p>(Optional) Watch the Art of the Screenshake: <a href="https://www.youtube.com/watch?v=AJdEqssNZ-U">https://www.youtube.com/watch?v=AJdEqssNZ-U</a></p>
+<p>Play:</p>
+<p><strong>WARNING: THIS GAME HAS A LOT OF FLASHING LIGHTS AND BRIGHT COLORS ETC.</strong></p>
+<ul>
+<li>Nukeheck: <a href="https://ash-k.itch.io/nukeheck">https://ash-k.itch.io/nukeheck</a></li>
+</ul>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>

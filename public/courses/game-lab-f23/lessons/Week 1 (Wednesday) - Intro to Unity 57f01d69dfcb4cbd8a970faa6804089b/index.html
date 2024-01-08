@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Fran Rojo</title>
+    <!-- <title>☁☁☁☁☁☁☁☁☁☁☾☁</title> -->
+    <link rel="icon" type="image/gif" href="" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/main.js"></script>
+  </head>
+
+  <body onload="init()">
+
+    <!-- header/navbar -->
+    <div id="header">
+    <!-- 
+      <a href="/about" id="name" onmouseenter="onNameHover(this)">Fran Rojo</a>
+      <div id="header-menu-wrapper">
+        <a href="/about" id="about-header" class="header-menu-item">about</a>
+        <a href="/archive" id="work-header" class="header-menu-item">archive</a>
+      </div>
+    -->
+    </div>
+
+    <!-- content -->
+    
+<h1>Week 1 (Wednesday) - Intro to Unity</h1>
+<h2>Course Intro</h2>
+<h2>Intro to Unity</h2>
+<p>It’s time to download Unity! Follow the instructions here: (just for Unity)</p>
+<p><a href="../../Before%20the%20First%20Class%20ac36a26e6aa84ba3b3e6113e43694287/">Before the First Class</a></p>
+<h3>What is a game engine?</h3>
+<p>hosts the game and allows you to launch it</p>
+<ul>
+<li>lets you compile and build the game</li>
+</ul>
+<p>defines the physics and inputs</p>
+<ul>
+<li>saves you from having to code/build systems yourself from scratch</li>
+</ul>
+<p>graphics/render system</p>
+<p>lets you edit the game with a graphic interface</p>
+<h3>What do you know about Unity?</h3>
+<p>both web games and native apps</p>
+<p>user-friendly</p>
+<p>general purpose</p>
+<p><a href="https://www.pcgamer.com/heres-what-nothing-looks-like-in-18-different-game-engines/">Pippin Barrs nothings in different game engines</a></p>
+<p><a href="https://www.youtube.com/watch?v=B0Kz2CtPqcs">Em Reed on Mass art game engines</a> (<a href="https://emreed.net/GameArtEngines_Transcript">transcript</a>)</p>
+<p><a href="https://kotaku.com/unity-new-contract-us-government-military-army-engine-1849403118">Unity military contract</a></p>
+<h2>The Unity Editor</h2>
+<h3>Scene</h3>
+<p>The scene view is where you edit the placement of gameobjects in 2d or 3d space. The location of these objects, and all of the data on them, is saved into scene files. When you hit ctrl + s, this is the file that is being saved. Along the top toolbar there are buttons to mute audio, change between pivot options, change between local and global space, visualize a grid, toggle scene view rendering modes, and more</p>
+<ul>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://www.notion.so/15603b66e5414048ab4d7f820d22e572?pvs=21">The Scene view</a></p>
+</li>
+</ul>
+<p><img src="Week%201%20(Wednesday)%20-%20Intro%20to%20Unity%2057f01d69dfcb4cbd8a970faa6804089b/Untitled.png" alt="Untitled"></p>
+<h3>Game</h3>
+<p>This is where the game displays to when running, and where you can interact with it as it will appear to a player. On it’s toolbar there are options to change aspect ratios, mute game audio, display stats (like fps, and batches).</p>
+<ul>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://www.notion.so/15603b66e5414048ab4d7f820d22e572?pvs=21">The Game view</a></p>
+</li>
+</ul>
+<h3>Hierarchy</h3>
+<p>This the window that lists all of the GameObjects in your current scene. You create new GameObjects by right clicking on the hierarchy, or clicking the + button in the top left of the window.</p>
+<ul>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/Hierarchy.html">The Hierarchy window</a></p>
+</li>
+</ul>
+<p><img src="Week%201%20(Wednesday)%20-%20Intro%20to%20Unity%2057f01d69dfcb4cbd8a970faa6804089b/Untitled%201.png" alt="Untitled"></p>
+<h3><strong>Inspector</strong></h3>
+<p>This is where you edit all of the data, settings, and values on almost everything in unity, namely the gameobjects in your scene, and the files in your project folder.</p>
+<ul>
+<li>
+<p>Notes</p>
+<p>The checkbox to the left of the name is how you set a gameobject active or inactive</p>
+</li>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://www.notion.so/15603b66e5414048ab4d7f820d22e572?pvs=21">The Inspector window</a></p>
+</li>
+</ul>
+<p><img src="Week%201%20(Wednesday)%20-%20Intro%20to%20Unity%2057f01d69dfcb4cbd8a970faa6804089b/Untitled%202.png" alt="Untitled"></p>
+<h3>Project</h3>
+<p>Where you can access, arrange, create, and delete files from your your assets folder. The assets folder is the folder in your unity’s project directory where all your game’s files are stored.</p>
+<ul>
+<li>
+<p>Notes</p>
+<p>You can right click any file or folder here and “show in explorer” to locate its file on your computer.</p>
+<p>You can change from a two column layout to a one column layout by selecting the three dots in the top right of the project window</p>
+</li>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/ProjectView.html">The Project window</a></p>
+</li>
+</ul>
+<p><img src="Week%201%20(Wednesday)%20-%20Intro%20to%20Unity%2057f01d69dfcb4cbd8a970faa6804089b/Untitled%203.png" alt="Untitled"></p>
+<h3>Console</h3>
+<p>Where messages, errors, and warnings are printed out by scripts. This includes scripts from you, from unity, and from plugins and packages.</p>
+<ul>
+<li>
+<p>Notes</p>
+<p>The buttons in the top right toggle messages, warnings, and errors</p>
+<p>Double clicking an error brings you to the line of code that caused it</p>
+</li>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/Console.html">The Console Window</a></p>
+</li>
+</ul>
+<p><img src="Week%201%20(Wednesday)%20-%20Intro%20to%20Unity%2057f01d69dfcb4cbd8a970faa6804089b/Untitled%204.png" alt="Untitled"></p>
+<h2>GameObjects, Transforms, Components, oh my!</h2>
+<p>The fundamental truths of Unity:</p>
+<aside>
+💡 **A game is made up of GameObjects.
+<p>GameObjects all have a Transform.</p>
+<p>GameObjects are collections of Components.**</p>
+</aside>
+<p>The more you think about how everything relates to this fundamental architecture, the easier it will be to become adept at using Unity as a tool.</p>
+<p>(by the way, this is how a lot of game engines work; if you were to build your own, chances are it would have a pattern like this)</p>
+<h3>GameObjects</h3>
+<p>These are the building blocks you make your games in unity out of, everything that you put in your game is a gameobject, with no exceptions.</p>
+<p>You can think of gameobjects as <em>points in 3d space</em> that we add <em>information and behaviors</em> to.</p>
+<ul>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/GameObjects.html">GameObjects</a></p>
+</li>
+</ul>
+<h3>Transforms</h3>
+<p>Those “points in 3d space” are kept track of with what’s called a Transform. A transform keeps track of a gameobject’s position, rotation, and scale. <strong>GameObjects all have a Transform</strong>, it’s required by unity. When you make a gameobject it will automatically have a transform and you cannot remove it.</p>
+<ul>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/class-Transform.html">Transforms</a></p>
+</li>
+</ul>
+<h3>Components</h3>
+<p>The “information and behaviors” are added to gameobjects via Components. Unity has created many components that you can add to a gameobject to do some kind of functionality (like play a sound, fall with physics, collide with other colliders, render a 3d model, shine light onto your scene, and more). When can even make our own components by writing code in scripts and then attaching them to a gameobject.</p>
+<ul>
+<li>
+<p>Links</p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/Components.html">Components</a></p>
+<p>Unity Docs: <a href="https://docs.unity3d.com/Manual/UsingComponents.html">Using Components</a></p>
+</li>
+</ul>
+<p><img src="Week%201%20(Wednesday)%20-%20Intro%20to%20Unity%2057f01d69dfcb4cbd8a970faa6804089b/Untitled%205.png" alt="An example GameObject “soccerball”, as viewed by the inspector"></p>
+<p>An example GameObject “soccerball”, as viewed by the inspector</p>
+<h2>Lab/Homework</h2>
+<h3>Research:</h3>
+<p><a href="https://www.pcgamer.com/heres-what-nothing-looks-like-in-18-different-game-engines/">Pippin Barrs nothings in different game engines</a></p>
+<p><a href="https://www.youtube.com/watch?v=B0Kz2CtPqcs">Em Reed on Mass art game engines</a> (<a href="https://emreed.net/GameArtEngines_Transcript">transcript</a>)</p>
+<p><a href="https://kotaku.com/unity-new-contract-us-government-military-army-engine-1849403118">Unity military contract</a></p>
+<h3>Practice:</h3>
+<p><a href="../../Assignments%202311db1cc8994ec1ac0b90ebc6aa31e2/Modeling%20a%20Space%20DUE%209%2006%2053ebae22340047c3b5d3e021e71da5d5/">Modeling a Space | DUE 9/06</a></p>
+<h2>Resources</h2>
+<p><a href="https://docs.unity3d.com/Manual/">Unity Documentation</a></p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Danny Hawk’s Unity Reference docs:</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p><a href="https://www.notion.so/Unity-Intro-Reference-Doc-2894afd4fed047f9962a9b938b1dd686?pvs=21">Unity Intro Reference</a></p>
+<p><a href="https://www.notion.so/Unity-Tips-That-Literally-Saved-My-Life-97d7af0e4d0a4d5b8b868503b9564f94?pvs=21">Unity Tips That Literally Saved My Life</a></p>
+<h2>Credits</h2>
+<p>A lot of content on this page has been lovingly stolen from the inimitable Danny Hawk’s <a href="https://www.notion.so/Unity-Intro-Reference-Doc-2894afd4fed047f9962a9b938b1dd686?pvs=21">Unity Intro Reference</a></p>
+
+
+
+<div>THIS PAGE HAS A NAV SIDEBAR</div>
+
+  </body>
+
+</html>
